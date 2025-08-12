@@ -224,11 +224,35 @@ function displayRecipes() {
         }
       }
       if (itDesc && plDesc) {
-        const descP = document.createElement('p');
-        descP.className = 'recipe-description';
-        // Use data-desc attribute to store Italian text for TTS if needed
-        descP.innerHTML = `<em>Przygotowanie:</em> <span class="it-desc" data-text="${itDesc}">${itDesc}</span><br><span class="pl-desc">${plDesc}</span>`;
-        contentDiv.appendChild(descP);
+        const descDiv = document.createElement('div');
+        descDiv.className = 'recipe-description';
+
+        const prepLabel = document.createElement('em');
+        prepLabel.textContent = 'Przygotowanie:';
+        descDiv.appendChild(prepLabel);
+
+        const itSentences = itDesc.match(/[^.!?]+[.!?]+/g) || [itDesc];
+        const plSentences = plDesc.match(/[^.!?]+[.!?]+/g) || [plDesc];
+
+        itSentences.forEach((itSentence, idx) => {
+          const pair = document.createElement('div');
+          pair.className = 'desc-pair';
+
+          const itSpan = document.createElement('span');
+          itSpan.className = 'it-desc';
+          itSpan.dataset.text = itSentence.trim();
+          itSpan.textContent = itSentence.trim();
+          pair.appendChild(itSpan);
+
+          const plSpan = document.createElement('span');
+          plSpan.className = 'pl-desc';
+          plSpan.textContent = (plSentences[idx] || '').trim();
+          pair.appendChild(plSpan);
+
+          descDiv.appendChild(pair);
+        });
+
+        contentDiv.appendChild(descDiv);
       }
 
       // If the recipe has a photo defined, display it under the description.

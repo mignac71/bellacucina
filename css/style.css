@@ -300,12 +300,22 @@ summary::-webkit-details-marker {
   line-height: 1.5;
 }
 
+.recipe-description .it-desc,
+.recipe-description .pl-desc {
+  display: block;
+}
+
 .recipe-description .it-desc {
   color: var(--color-green);
 }
 
 .recipe-description .pl-desc {
   color: var(--color-red);
+  font-style: italic;
+}
+
+.recipe-description .desc-pair {
+  margin-bottom: 0.5em;
 }
 
 /* Game controls */
