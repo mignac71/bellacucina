@@ -244,8 +244,6 @@ function displayRecipes() {
           itSpan.textContent = itSentence.trim();
           pair.appendChild(itSpan);
 
-          pair.appendChild(document.createElement('br'));
-
           const plSpan = document.createElement('span');
           plSpan.className = 'pl-desc';
           plSpan.textContent = (plSentences[idx] || '').trim();

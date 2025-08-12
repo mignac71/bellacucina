@@ -300,6 +300,11 @@ summary::-webkit-details-marker {
   line-height: 1.5;
 }
 
+.recipe-description .it-desc,
+.recipe-description .pl-desc {
+  display: block;
+}
+
 .recipe-description .it-desc {
   color: var(--color-green);
 }
