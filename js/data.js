@@ -251,7 +251,7 @@ window.recipesData = [
       {"it": "prezzemolo", "pl": "natka pietruszki"},
       {"it": "parmigiano", "pl": "parmezan"}
     ],
-    "image": "images/recipes/pasta_alla_boscaiola.jpeg"
+    "image": "images/recipes/pasta_alla_boscaiola.jpg"
   },
   {
     "id": 17,
@@ -310,7 +310,7 @@ window.recipesData = [
       {"it": "burro", "pl": "masło"},
       {"it": "salvia", "pl": "szałwia"}
     ],
-    "image": "images/recipes/Ravioli_ricotta_e_spinaci.jpeg"
+    "image": "images/recipes/Ravioli_ricotta_e_spinaci.jpg"
   },
   {
     "id": 21,
@@ -325,7 +325,7 @@ window.recipesData = [
       {"it": "parmigiano", "pl": "parmezan"},
       {"it": "besciamella", "pl": "beszamel"}
     ],
-    "image": "images/recipes/Cannelloni_ricotta_e_spinaci.jpeg"
+    "image": "images/recipes/Cannelloni_ricotta_e_spinaci.jpg"
   },
   {
     "id": 22,
@@ -338,7 +338,7 @@ window.recipesData = [
       {"it": "basilico", "pl": "bazylia"},
       {"it": "parmigiano", "pl": "parmezan"}
     ],
-    "image": "images/recipes/Gnocchi_di_patate_al_pomodoro.jpeg"
+    "image": "images/recipes/Gnocchi_di_patate_al_pomodoro.jpg"
   },
   {
     "id": 23,
@@ -352,7 +352,7 @@ window.recipesData = [
       {"it": "peperoncino", "pl": "papryczka chili"},
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
     ],
-    "image": "images/recipes/Orecchiette_con_cime_di_rapa.jpeg"
+    "image": "images/recipes/Orecchiette_con_cime_di_rapa.jpg"
   },
   {
     "id": 24,
@@ -400,7 +400,7 @@ window.recipesData = [
       {"it": "brodo di pesce", "pl": "bulion rybny"},
       {"it": "vino bianco", "pl": "białe wino"}
     ],
-    "image": "images/recipes/Risotto_al_nero_di_seppia.jpeg"
+    "image": "images/recipes/Risotto_al_nero_di_seppia.jpg"
   },
   {
     "id": 27,
@@ -415,7 +415,7 @@ window.recipesData = [
       {"it": "brodo", "pl": "bulion"},
       {"it": "parmigiano", "pl": "parmezan"}
     ],
-    "image": "images/recipes/Risotto_allo_zafferano.jpeg"
+    "image": "images/recipes/Risotto_allo_zafferano.jpg"
   },
   {
     "id": 28,
@@ -431,7 +431,7 @@ window.recipesData = [
       {"it": "vino bianco", "pl": "białe wino"},
       {"it": "prezzemolo", "pl": "natka pietruszki"}
     ],
-    "image": "images/recipes/Risotto_ai_frutti_di_mare.jpeg"
+    "image": "images/recipes/Risotto_ai_frutti_di_mare.jpg"
   },
   {
     "id": 29,
@@ -446,7 +446,7 @@ window.recipesData = [
       {"it": "brodo", "pl": "bulion"},
       {"it": "parmigiano", "pl": "parmezan"}
     ],
-    "image": "images/recipes/Risotto_agli_asparagi.jpeg"
+    "image": "images/recipes/Risotto_agli_asparagi.jpg"
   },
   {
     "id": 30,
@@ -461,7 +461,7 @@ window.recipesData = [
       {"it": "brodo", "pl": "bulion"},
       {"it": "parmigiano", "pl": "parmezan"}
     ],
-    "image": "images/recipes/Risotto_alla_zucca.jpeg"
+    "image": "images/recipes/Risotto_alla_zucca.jpg"
   },
   {
     "id": 31,
@@ -478,7 +478,7 @@ window.recipesData = [
       {"it": "pane raffermo", "pl": "czerstwy chleb"},
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
     ],
-    "image": "images/recipes/Ribollita.jpeg"
+    "image": "images/recipes/Ribollita.jpg"
   },
   {
     "id": 32,
@@ -494,7 +494,7 @@ window.recipesData = [
       {"it": "aglio", "pl": "czosnek"},
       {"it": "brodo vegetale", "pl": "bulion warzywny"}
     ],
-    "image": "images/recipes/zuppa_di_lenticchie.jpeg"
+    "image": "images/recipes/zuppa_di_lenticchie.jpg"
   },
   {
     "id": 33,
@@ -518,7 +518,7 @@ window.recipesData = [
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
       {"it": "sale", "pl": "sól"}
     ],
-    "image": "images/recipes/Minestrone.jpeg"
+    "image": "images/recipes/Minestrone.jpg"
   },
   {
     "id": 34,
@@ -533,7 +533,7 @@ window.recipesData = [
       {"it": "pane", "pl": "chleb"},
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
     ],
-    "image": "images/recipes/Acquacotta.jpeg"
+    "image": "images/recipes/Acquacotta.jpg"
   },
   {
     "id": 35,
@@ -550,7 +550,7 @@ window.recipesData = [
       {"it": "fagioli", "pl": "fasola"},
       {"it": "brodo", "pl": "bulion"}
     ],
-    "image": "images/recipes/zuppa_di_verdure.jpeg"
+    "image": "images/recipes/zuppa_di_verdure.jpg"
   },
   {
     "id": 36,
@@ -565,7 +565,7 @@ window.recipesData = [
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
       {"it": "vino rosso", "pl": "czerwone wino"}
     ],
-    "image": "images/recipes/polenta_con_salsiccia.jpeg"
+    "image": "images/recipes/polenta_con_salsiccia.jpg"
   },
   {
     "id": 37,
@@ -598,7 +598,7 @@ window.recipesData = [
       {"it": "vino bianco", "pl": "białe wino"},
       {"it": "burro", "pl": "masło"}
     ],
-    "image": "images/recipes/Saltimbocca_alla_Romana.jpeg"
+    "image": "images/recipes/Saltimbocca_alla_Romana.jpg"
   },
   {
     "id": 39,
@@ -613,7 +613,7 @@ window.recipesData = [
       {"it": "vino bianco", "pl": "białe wino"},
       {"it": "prezzemolo", "pl": "natka pietruszki"}
     ],
-    "image": "images/recipes/Scaloppine_al_limone.jpeg"
+    "image": "images/recipes/Scaloppine_al_limone.jpg"
   },
   {
     "id": 40,
@@ -627,7 +627,7 @@ window.recipesData = [
       {"it": "vino bianco", "pl": "białe wino"},
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
     ],
-    "image": "images/recipes/arrosto_di_maiale.jpeg"
+    "image": "images/recipes/arrosto_di_maiale.jpg"
   },
   {
     "id": 41,
@@ -641,7 +641,7 @@ window.recipesData = [
       {"it": "burro chiarificato", "pl": "klarowane masło"},
       {"it": "limone", "pl": "cytryna"}
     ],
-    "image": "images/recipes/Cotoletta_alla_Milanese.jpeg"
+    "image": "images/recipes/Cotoletta_alla_Milanese.jpg"
   },
   {
     "id": 42,
@@ -657,7 +657,7 @@ window.recipesData = [
       {"it": "rosmarino", "pl": "rozmaryn"},
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
     ],
-    "image": "images/recipes/Pollo_alla_cacciatora.jpeg"
+    "image": "images/recipes/Pollo_alla_cacciatora.jpg"
   },
   {
     "id": 43,
@@ -673,7 +673,7 @@ window.recipesData = [
       {"it": "aglio", "pl": "czosnek"},
       {"it": "erbe aromatiche", "pl": "zioła"}
     ],
-    "image": "images/recipes/Brasato_al_Barolo.jpeg"
+    "image": "images/recipes/Brasato_al_Barolo.jpg"
   },
   {
     "id": 44,
@@ -688,7 +688,7 @@ window.recipesData = [
       {"it": "vino rosso", "pl": "czerwone wino"},
       {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
     ],
-    "image": "images/recipes/spezzatino.jpeg"
+    "image": "images/recipes/spezzatino.jpg"
   },
   {
     "id": 45,
@@ -703,7 +703,7 @@ window.recipesData = [
       {"it": "vino rosso", "pl": "czerwone wino"},
       {"it": "peperoncino", "pl": "papryczka chili"}
     ],
-    "image": "images/recipes/Cacciucco.jpeg"
+    "image": "images/recipes/Cacciucco.jpg"
   },
   {
     "id": 46,
@@ -717,7 +717,7 @@ window.recipesData = [
       {"it": "prezzemolo", "pl": "natka pietruszki"},
       {"it": "vino bianco", "pl": "białe wino"}
     ],
-    "image": "images/recipes/Zuppa_di_pesce.jpeg"
+    "image": "images/recipes/Zuppa_di_pesce.jpg"
   },
   {
     "id": 47,
@@ -732,7 +732,7 @@ window.recipesData = [
       {"it": "acciughe", "pl": "anchovies"},
       {"it": "parmigiano", "pl": "parmezan"}
     ],
-    "image": "images/recipes/Baccala_alla_Vicentina.jpeg"
+    "image": "images/recipes/Baccala_alla_Vicentina.jpg"
   },
   {
     "id": 48,
@@ -763,7 +763,7 @@ window.recipesData = [
       {"it": "vino bianco", "pl": "białe wino"},
       {"it": "burro", "pl": "masło"}
     ],
-    "image": "images/recipes/Involtini_di_vitello.jpeg"
+    "image": "images/recipes/Involtini_di_vitello.jpg"
   },
   {
     "id": 50,
@@ -774,7 +774,7 @@ window.recipesData = [
       {"it": "prosciutto crudo", "pl": "szynka parmeńska"},
       {"it": "melone", "pl": "melon"}
     ],
-    "image": "images/recipes/Prosciutto_e_melone.jpeg"
+    "image": "images/recipes/Prosciutto_e_melone.jpg"
   },
   {
     "id": 51,
@@ -788,7 +788,7 @@ window.recipesData = [
       {"it": "parmigiano", "pl": "parmezan"},
       {"it": "rucola", "pl": "rukola"}
     ],
-    "image": "images/recipes/Carpaccio_di_manzo_.jpeg"
+    "image": "images/recipes/Carpaccio_di_manzo_.jpg"
   },
   {
     "id": 52,
@@ -819,7 +819,7 @@ window.recipesData = [
       {"it": "vaniglia", "pl": "wanilia"},
       {"it": "salsa di frutti di bosco", "pl": "sos z owoców leśnych"}
     ],
-    "image": "images/recipes/Panna_cotta.jpeg"
+    "image": "images/recipes/Panna_cotta.jpg"
   },
   {
     "id": 54,
@@ -833,7 +833,7 @@ window.recipesData = [
       {"it": "canditi", "pl": "kandyzowane owoce"},
       {"it": "cioccolato", "pl": "czekolada"}
     ],
-    "image": "images/recipes/Cannoli_siciliani.jpeg"
+    "image": "images/recipes/Cannoli_siciliani.jpg"
   },
   {
     "id": 55,
@@ -847,7 +847,7 @@ window.recipesData = [
       {"it": "tuorli d'uovo", "pl": "żółtka"},
       {"it": "vaniglia", "pl": "wanilia"}
     ],
-    "image": "images/recipes/gelato.jpeg"
+    "image": "images/recipes/gelato.jpg"
   },
   {
     "id": 56,
@@ -859,7 +859,7 @@ window.recipesData = [
       {"it": "zucchero", "pl": "cukier"},
       {"it": "vino Marsala", "pl": "wino Marsala"}
     ],
-    "image": "images/recipes/Zabaglione_(zabaione).jpeg"
+    "image": "images/recipes/Zabaglione_(zabaione).jpg"
   },
   {
     "id": 57,
@@ -873,7 +873,7 @@ window.recipesData = [
       {"it": "frutta candita", "pl": "owoce kandyzowane"},
       {"it": "marzapane", "pl": "marcepan"}
     ],
-    "image": "images/recipes/Cassata_siciliana.jpeg"
+    "image": "images/recipes/Cassata_siciliana.jpg"
   },
   {
     "id": 58,
@@ -887,7 +887,7 @@ window.recipesData = [
       {"it": "burro", "pl": "masło"},
       {"it": "zucchero", "pl": "cukier"}
     ],
-    "image": "images/recipes/Panettone.jpeg"
+    "image": "images/recipes/Panettone.jpg"
   },
   {
     "id": 59,
@@ -901,7 +901,7 @@ window.recipesData = [
       {"it": "uova", "pl": "jajka"},
       {"it": "vaniglia", "pl": "wanilia"}
     ],
-    "image": "images/recipes/Pandoro.jpeg"
+    "image": "images/recipes/Pandoro.jpg"
   },
   {
     "id": 60,
@@ -914,7 +914,7 @@ window.recipesData = [
       {"it": "zucchero a velo", "pl": "cukier puder"},
       {"it": "amarene sciroppate", "pl": "wiśnie w syropie"}
     ],
-    "image": "images/recipes/Zeppole_di_San_Giuseppe.jpeg"
+    "image": "images/recipes/Zeppole_di_San_Giuseppe.jpg"
   },
   {
     "id": 61,
@@ -928,7 +928,7 @@ window.recipesData = [
       {"it": "canditi", "pl": "kandyzowane owoce"},
       {"it": "cannella", "pl": "cynamon"}
     ],
-    "image": "images/recipes/Sfogliatella.jpeg"
+    "image": "images/recipes/Sfogliatella.jpg"
   },
   {
     "id": 62,
@@ -939,7 +939,7 @@ window.recipesData = [
       {"it": "pasta lievitata", "pl": "ciasto drożdżowe"},
       {"it": "sciroppo al rum", "pl": "syrop rumowy"}
     ],
-    "image": "images/recipes/baba_al_rum.jpeg"
+    "image": "images/recipes/baba_al_rum.jpg"
   },
   {
     "id": 63,
@@ -952,7 +952,7 @@ window.recipesData = [
       {"it": "albumi", "pl": "białka"},
       {"it": "estratto di mandorla", "pl": "ekstrakt migdałowy"}
     ],
-    "image": "images/recipes/Amaretti.jpeg"
+    "image": "images/recipes/Amaretti.jpg"
   },
   {
     "id": 64,
@@ -966,7 +966,7 @@ window.recipesData = [
       {"it": "uova", "pl": "jajka"},
       {"it": "burro", "pl": "masło"}
     ],
-    "image": "images/recipes/Cantucci_(biscotti).jpeg"
+    "image": "images/recipes/Cantucci_(biscotti).jpg"
   },
   {
     "id": 65,
@@ -978,7 +978,7 @@ window.recipesData = [
       {"it": "crema pasticcera", "pl": "krem cukierniczy"},
       {"it": "amarene", "pl": "wiśnie"}
     ],
-    "image": "images/recipes/pasticciotto_leccese.jpeg"
+    "image": "images/recipes/pasticciotto_leccese.jpg"
   },
   {
     "id": 66,
@@ -991,7 +991,7 @@ window.recipesData = [
       {"it": "caffè", "pl": "kawa"},
       {"it": "uova", "pl": "jajka"}
     ],
-    "image": "images/recipes/semifreddo__al_caffe.jpeg"
+    "image": "images/recipes/semifreddo__al_caffe.jpg"
   },
   {
     "id": 67,
@@ -1003,7 +1003,7 @@ window.recipesData = [
       {"it": "miele", "pl": "miód"},
       {"it": "zuccherini", "pl": "kolorowe posypki"}
     ],
-    "image": "images/recipes/Struffoli.jpeg"
+    "image": "images/recipes/Struffoli.jpg"
   },
   {
     "id": 68,
@@ -1016,7 +1016,7 @@ window.recipesData = [
       {"it": "mandorle", "pl": "migdały"},
       {"it": "glassa di zucchero", "pl": "lukier"}
     ],
-    "image": "images/recipes/Colomba_pasquale.jpeg"
+    "image": "images/recipes/Colomba_pasquale.jpg"
   },
   {
     "id": 69,
@@ -1030,7 +1030,7 @@ window.recipesData = [
       {"it": "pinoli", "pl": "orzeszki piniowe"},
       {"it": "uvetta", "pl": "rodzynki"}
     ],
-    "image": "images/recipes/Sarde_in_saor.jpeg"
+    "image": "images/recipes/Sarde_in_saor.jpg"
   },
   {
     "id": 70,
@@ -1045,7 +1045,7 @@ window.recipesData = [
       {"it": "olio per friggere", "pl": "olej do smażenia"},
       {"it": "limone", "pl": "cytryna"}
     ],
-    "image": "images/recipes/Fritto_misto_di_pesce.jpeg"
+    "image": "images/recipes/Fritto_misto_di_pesce.jpg"
   },
   {
     "id": 71,
@@ -1060,7 +1060,7 @@ window.recipesData = [
       {"it": "prezzemolo", "pl": "natka pietruszki"},
       {"it": "peperoncino", "pl": "papryczka chili"}
     ],
-    "image": "images/recipes/gamberi_alla_busara.jpeg"
+    "image": "images/recipes/gamberi_alla_busara.jpg"
   }
 ];
 
