@@ -1,26 +1,49 @@
 // Global scoreboard management for Bella Cucina
 
+// Prosta pamięć rezerwowa, gdy localStorage jest niedostępne
+let memoryScores = { Kasia: 0, Michał: 0 };
+let storageAvailable = true;
+
 // Load scores from localStorage or initialize default
 function loadScores() {
-  const stored = localStorage.getItem('bellaScores');
-  if (stored) {
+  if (storageAvailable) {
     try {
-      const parsed = JSON.parse(stored);
-      // ensure both players exist
-      return {
-        Kasia: parsed.Kasia ?? 0,
-        Michał: parsed['Michał'] ?? 0,
-      };
+      const stored = localStorage.getItem('bellaScores');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          // ensure both players exist
+          memoryScores = {
+            Kasia: parsed.Kasia ?? 0,
+            Michał: parsed['Michał'] ?? 0,
+          };
+        } catch (e) {
+          console.error('Błąd odczytu punktów:', e);
+          memoryScores = { Kasia: 0, Michał: 0 };
+        }
+      } else {
+        memoryScores = { Kasia: 0, Michał: 0 };
+      }
     } catch (e) {
-      console.error('Błąd odczytu punktów:', e);
+      console.error('localStorage niedostępne, używam wartości domyślnych:', e);
+      storageAvailable = false;
+      memoryScores = { Kasia: 0, Michał: 0 };
     }
   }
-  return { Kasia: 0, Michał: 0 };
+  return memoryScores;
 }
 
 // Save scores back to localStorage
 function saveScores(scores) {
-  localStorage.setItem('bellaScores', JSON.stringify(scores));
+  memoryScores = scores;
+  if (storageAvailable) {
+    try {
+      localStorage.setItem('bellaScores', JSON.stringify(scores));
+    } catch (e) {
+      console.error('Błąd zapisu punktów do localStorage:', e);
+      storageAvailable = false;
+    }
+  }
 }
 
 // Update scoreboard in the DOM
