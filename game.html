@@ -53,8 +53,18 @@
       </section>
     </main>
 
-    <script src="js/data.js"></script>
     <script src="js/main.js"></script>
     <script src="js/game.js"></script>
+    <script>
+      fetch('data/recipes.json')
+        .then((res) => res.json())
+        .then((data) => {
+          window.recipesData = data;
+          if (typeof initGamePage === 'function') {
+            initGamePage();
+          }
+        })
+        .catch((err) => console.error('Błąd ładowania danych gry:', err));
+    </script>
   </body>
 </html>

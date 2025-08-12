@@ -51,11 +51,21 @@
       </section>
     </main>
 
-    <script src="js/data.js"></script>
-    <!-- Load detailed instructions before recipes.js so that recipeInstructions
+    <!-- Detailed instructions before recipes.js so that recipeInstructions
          is available for each recipe. -->
     <script src="js/instructions.js"></script>
     <script src="js/main.js"></script>
     <script src="js/recipes.js"></script>
+    <script>
+      fetch('data/recipes.json')
+        .then((res) => res.json())
+        .then((data) => {
+          window.recipesData = data;
+          if (typeof initRecipesPage === 'function') {
+            initRecipesPage();
+          }
+        })
+        .catch((err) => console.error('Błąd ładowania danych przepisów:', err));
+    </script>
   </body>
 </html>

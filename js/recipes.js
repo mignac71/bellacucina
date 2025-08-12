@@ -324,8 +324,10 @@ function pronounceItalian(word) {
   }
 }
 
-// Search and filter listeners
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize page after recipe data has been loaded externally.
+// This function is called from recipes.html once the JSON data
+// has been fetched and assigned to `window.recipesData`.
+window.initRecipesPage = function () {
   loadRecipes();
   const searchInput = document.getElementById('search-input');
   const categorySelect = document.getElementById('category-filter');
@@ -335,4 +337,4 @@ document.addEventListener('DOMContentLoaded', () => {
   if (categorySelect) {
     categorySelect.addEventListener('change', displayRecipes);
   }
-});
+};
