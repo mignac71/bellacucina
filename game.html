@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gry – Bella Cucina</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-dH9z5c6BAV5lpZdscOSgnUUuY+2r78JFG6ESZsCp2BGhj9x4t3iPza6ArVHMV0Pux+uAoH+g9oKSM8d1Ji4EVw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="hero small-hero">
+      <img src="images/italian_town.png" alt="Urokliwe włoskie miasteczko" class="hero-img" />
+    </header>
+    <section class="page-title container">
+      <h1>Gry</h1>
+      <p class="tagline">Rywalizuj, ucz się i baw dobrze!</p>
+    </section>
+
+    <main class="container">
+      <div class="back-link">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Powrót</a>
+      </div>
+      <section class="game-controls">
+        <div class="player-select">
+          <label>
+            <input type="radio" name="current-player" value="Kasia" checked />
+            Kasia
+          </label>
+          <label>
+            <input type="radio" name="current-player" value="Michał" />
+            Michał
+          </label>
+        </div>
+        <div class="game-select">
+          <button class="game-btn" data-game="memory">Gra pamięciowa</button>
+          <button class="game-btn" data-game="ingredients">Dobierz składniki</button>
+          <button class="game-btn" data-game="translation">Tłumaczenie</button>
+        </div>
+      </section>
+
+      <section class="scoreboard" id="scoreboard">
+        <!-- scoreboard loaded via main.js -->
+      </section>
+
+      <section id="game-container">
+        <!-- dynamic game content inserted here -->
+      </section>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>

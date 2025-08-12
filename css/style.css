@@ -1,0 +1,613 @@
+/* Root variables for Italian flag colours */
+:root {
+  --color-green: #009246;
+  --color-white: #ffffff;
+  --color-red: #ce2b37;
+  --color-beige: #f7f0d0;
+  --text-dark: #333333;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Basic resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--color-beige);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+h1, h2 {
+  font-family: 'Georgia', serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Hero section now contains only an image. Image scales with viewport */
+.hero {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Hero image on each page. We avoid cropping by allowing the image to
+ * maintain its natural aspect ratio and by constraining its maximum
+ * height relative to the viewport. Using object-fit: contain ensures
+ * that the full illustration is visible on all screen widths. The
+ * height automatically adjusts with the width, up to a sensible
+ * maximum height (60vh on large screens) defined later in media
+ * queries.
+ */
+
+/*
+ * Hero images scale with the page width and maintain their
+ * natural aspect ratio. We remove explicit height limits so that the
+ * illustration is never cropped; if the viewport height is small,
+ * users may need to scroll slightly to view the full image. The
+ * object-fit: contain ensures the image is fully visible within its
+ * container without clipping.
+ */
+.hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  object-position: center top;
+  /* Do not allow the image to exceed the viewport height so that the
+     entire illustration remains visible without requiring vertical
+     scrolling. This works well for landscape‑oriented images. */
+  max-height: 100vh;
+}
+
+/* Page title section below hero */
+.page-title {
+  text-align: center;
+  padding: 16px 12px 8px;
+}
+
+.page-title h1 {
+  margin: 0 0 6px 0;
+  letter-spacing: 1px;
+}
+
+.page-title .tagline {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+/* Smaller hero variation used on subpages. The small hero uses the same
+   responsive scaling as the main hero but with a reduced maximum
+   height to keep subpages concise. */
+.hero.small-hero .hero-img {
+  height: auto;
+  max-height: 60vh;
+}
+
+/* For very wide screens ensure full image visibility */
+@media (min-width: 1200px) {
+  .hero-img {
+    /* On very wide screens we allow the image to continue scaling; no
+       height limit is applied so the full artwork remains visible. */
+    background: linear-gradient(to bottom, var(--color-beige), transparent);
+  }
+  .hero.small-hero .hero-img {
+    /* No separate height limit for small heroes on wide screens */
+  }
+}
+
+/* Main container */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Intro */
+.intro {
+  margin: 20px 0;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Scoreboard */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.scoreboard .player {
+  background-color: var(--color-white);
+  border-left: 8px solid var(--color-green);
+  border-right: 8px solid var(--color-red);
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--card-shadow);
+  text-align: center;
+  min-width: 150px;
+}
+
+.scoreboard .player h3 {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: var(--color-green);
+}
+
+.scoreboard .player .points {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-red);
+}
+
+/* Action cards */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px var(--card-shadow);
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px var(--card-shadow);
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: var(--color-red);
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  color: var(--color-green);
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+/* Reset button */
+.reset {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.reset-btn {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.reset-btn:hover {
+  background-color: #b71d2b;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  margin-top: 40px;
+}
+
+/* Interactive Italian words in recipe list */
+.it-name {
+  color: var(--color-green);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.it-name:hover {
+  color: var(--color-red);
+}
+
+/* Category sections on recipe page */
+.category-section {
+  margin-bottom: 40px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.category-header h3 {
+  font-size: 1.6rem;
+  color: var(--color-red);
+  text-transform: uppercase;
+}
+
+.category-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+/* Recipe summary styling */
+.recipe-summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.recipe-thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px var(--card-shadow);
+}
+
+.recipe-item[open] .recipe-summary {
+  font-weight: bold;
+}
+
+/* Hide default triangle marker on details/summary */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* List styling inside recipes */
+.ingredients-list ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
+/* Description under ingredient list */
+.recipe-description {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.recipe-description .it-desc {
+  color: var(--color-green);
+}
+
+.recipe-description .pl-desc {
+  color: var(--color-red);
+}
+
+/* Game controls */
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.player-select label {
+  margin-right: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.game-select {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.game-btn {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.game-btn:hover {
+  background-color: #007735;
+}
+
+/* Memory game grid */
+.memory-grid {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.memory-card {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-white);
+  border: 2px solid var(--color-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  user-select: none;
+  position: relative;
+  box-shadow: 0 2px 4px var(--card-shadow);
+  transition: transform 0.2s ease;
+}
+
+.memory-card.revealed {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  cursor: default;
+}
+
+.memory-card.matched {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  cursor: default;
+}
+
+/* Ingredient game */
+.ingredient-game {
+  margin-top: 20px;
+}
+
+.ingredient-game .question {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.ingredient-game .options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.ingredient-game .option {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-green);
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.ingredient-game .option.selected {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.ingredient-game .submit-btn {
+  margin-top: 15px;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.ingredient-game .submit-btn:hover {
+  background-color: #007735;
+}
+
+/* Translation game */
+.translation-game {
+  margin-top: 20px;
+}
+
+.translation-game .question {
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.translation-game .answers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.translation-game .answer-btn {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-green);
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none;
+  /* Increase the font size and padding so the options are easier to tap on
+     mobile devices and easier to read on all screens. */
+  /* Increased font size and padding for better readability and easier tapping */
+  font-size: 1.35rem;
+  padding: 16px 26px;
+}
+
+.translation-game .answer-btn.correct {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.translation-game .answer-btn.wrong {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+/* Separate styling for the translation game's control buttons (e.g.
+   "Następne słowo"). This makes the button larger and more
+   prominent than the generic submit button used in the ingredient
+   game. */
+.translation-game .submit-btn {
+  margin-top: 15px;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.35rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: block;
+  margin: 20px auto 0;
+}
+.translation-game .submit-btn:hover {
+  background-color: #007735;
+}
+
+/* Subpage controls */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0 30px 0;
+}
+
+.back-link a {
+  color: var(--color-red);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.back-link a i {
+  margin-right: 5px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#search-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#category-filter {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Recipe list */
+.recipe-list {
+  margin-bottom: 50px;
+}
+
+.recipe-item {
+  background-color: var(--color-white);
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px var(--card-shadow);
+  overflow: hidden;
+}
+
+.recipe-item summary {
+  padding: 12px 16px;
+  cursor: pointer;
+  background-image: linear-gradient(to right, var(--color-green), var(--color-white), var(--color-red));
+  color: #222;
+  font-weight: bold;
+}
+
+.recipe-item[open] summary {
+  border-bottom: 1px solid #eee;
+}
+
+.ingredients-list {
+  padding: 10px 20px 20px 20px;
+}
+
+.category-tag {
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--color-green);
+}
+
+.ingredients-list ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.ingredients-list li {
+  margin-bottom: 6px;
+}
+
+/* Recipe photo displayed beneath the ingredients list.  We set a
+   responsive width so the image scales with the container. A border
+   radius softens the corners and a subtle box shadow helps it stand
+   out against the white card. */
+.recipe-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+/* Source attribution shown under each recipe photo. Use a small
+   font-size and muted colour so that the credit does not distract
+   from the main content. Center align to align with the image. */
+.image-source {
+  font-size: 0.75rem;
+  color: #555;
+  margin-top: 4px;
+  text-align: center;
+  font-style: italic;
+}
+
+.pronounce-btn {
+  background: none;
+  border: none;
+  color: var(--color-red);
+  cursor: pointer;
+  margin-left: 6px;
+  font-size: 0.9rem;
+}
+
+.pronounce-btn:hover {
+  color: var(--color-green);
+}

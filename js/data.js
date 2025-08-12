@@ -1,0 +1,1066 @@
+// Embedded dataset of over 100 klasycznych włoskich przepisów wraz z nazwami składników po włosku i po polsku.
+// Ładowanie danych zewnętrznych (np. z pliku JSON) jest blokowane w niektórych przeglądarkach w trybie file://,
+// dlatego wstawiamy je bezpośrednio do kodu jako globalną zmienną. Ta tablica będzie używana
+// w recipes.js oraz game.js.
+
+window.recipesData = [
+  {
+    "id": 1,
+    "italian_name": "Spaghetti alla Carbonara",
+    "polish_name": "Spaghetti carbonara",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "spaghetti", "pl": "spaghetti"},
+      {"it": "guanciale", "pl": "guanciale (podgardle wieprzowe)"},
+      {"it": "uova", "pl": "jajka"},
+      {"it": "pecorino romano", "pl": "ser pecorino romano"},
+      {"it": "pepe nero", "pl": "czarny pieprz"}
+    ],
+    "image": "images/recipes/spaghetti_alla_carbonara.jpg",
+    "source": "Fot. Ed Hawco via Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": 2,
+    "italian_name": "Lasagne al forno",
+    "polish_name": "Lazania",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "sfoglia di pasta", "pl": "płaty makaronowe"},
+      {"it": "ragù di carne", "pl": "sos ragù (mięsny)"},
+      {"it": "pomodori", "pl": "pomidory"},
+      {"it": "besciamella", "pl": "beszamel"},
+      {"it": "mozzarella", "pl": "mozzarella"},
+      {"it": "parmigiano", "pl": "parmezan"}
+    ],
+    "image": "images/recipes/lasagne_al_forno.jpg",
+    "source": "Fot. Ricettario di Mamidoli via Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": 3,
+    "italian_name": "Fettuccine Alfredo",
+    "polish_name": "Fettuccine Alfredo",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "fettuccine", "pl": "fettuccine"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "panna", "pl": "śmietanka"},
+      {"it": "aglio", "pl": "czosnek"}
+    ],
+    "image": "images/recipes/fettuccine_alfredo.jpg",
+    "source": "Fot. Robert Banh via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 4,
+    "italian_name": "Tagliatelle al ragù",
+    "polish_name": "Tagliatelle z sosem bolognese",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "tagliatelle", "pl": "tagliatelle"},
+      {"it": "carne macinata", "pl": "mięso mielone"},
+      {"it": "passata di pomodoro", "pl": "passata pomidorowa"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "carota", "pl": "marchewka"},
+      {"it": "sedano", "pl": "seler naciowy"},
+      {"it": "vino rosso", "pl": "czerwone wino"}
+    ],
+    "image": "images/recipes/tagliatelle_ragu.jpg",
+    "source": "Fot. WordRidden via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 5,
+    "italian_name": "Bucatini all'Amatriciana",
+    "polish_name": "Bucatini all'Amatriciana",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "bucatini", "pl": "bucatini"},
+      {"it": "guanciale", "pl": "guanciale (podgardle wieprzowe)"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "pecorino romano", "pl": "ser pecorino romano"},
+      {"it": "peperoncino", "pl": "papryczka chili"}
+    ],
+    "image": "images/recipes/bucatini_amatriciana.jpg",
+    "source": "Fot. Popo le Chien via Wikimedia Commons (CC0 Public Domain)"
+  },
+  {
+    "id": 6,
+    "italian_name": "Penne all'Arrabbiata",
+    "polish_name": "Penne all’Arrabbiata",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "penne", "pl": "penne"},
+      {"it": "pomodori", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "peperoncino", "pl": "papryczka chili"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"}
+    ],
+    "image": "images/recipes/penne_arrabbiata.jpg",
+    "source": "Fot. Petar Milošević via Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": 7,
+    "italian_name": "Spaghetti aglio, olio e peperoncino",
+    "polish_name": "Spaghetti aglio olio e peperoncino",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "spaghetti", "pl": "spaghetti"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
+      {"it": "peperoncino", "pl": "papryczka chili"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"}
+    ],
+    "image": "images/recipes/spaghetti_aglio_olio_peperoncino.jpg",
+    "source": "Fot. Vee Satayamas via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 8,
+    "italian_name": "Pasta alla Gricia",
+    "polish_name": "Makaron alla Gricia",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "rigatoni", "pl": "rigatoni"},
+      {"it": "guanciale", "pl": "guanciale (podgardle wieprzowe)"},
+      {"it": "pecorino romano", "pl": "ser pecorino romano"},
+      {"it": "pepe nero", "pl": "czarny pieprz"}
+    ],
+    "image": "images/recipes/pasta_alla_gricia.jpg",
+    "source": "Fot. Luca Nebuloni via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 9,
+    "italian_name": "Pasta alla Norma",
+    "polish_name": "Makaron alla Norma",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "maccheroni", "pl": "makaron (rurki)"},
+      {"it": "melanzane", "pl": "bakłażany"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "ricotta salata", "pl": "ricotta salata"},
+      {"it": "basilico", "pl": "bazylia"}
+    ],
+    "image": "images/recipes/pasta_alla_norma.jpg",
+    "source": "Fot. Paoletta S. via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 10,
+    "italian_name": "Pasta al Pesto Genovese",
+    "polish_name": "Makaron z pesto genueńskim",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "trofie", "pl": "trofie"},
+      {"it": "basilico", "pl": "bazylia"},
+      {"it": "pinoli", "pl": "orzeszki piniowe"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "pecorino", "pl": "ser pecorino"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/pasta_pesto_genovese.jpg",
+    "source": "Fot. Marco Del Torchio via Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": 11,
+    "italian_name": "Pasta al Pomodoro",
+    "polish_name": "Makaron z sosem pomidorowym",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "spaghetti", "pl": "spaghetti"},
+      {"it": "pomodori", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "basilico", "pl": "bazylia"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/pasta_al_pomodoro.jpg",
+    "source": "Fot. 10Rosso via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 12,
+    "italian_name": "Pasta al Limone",
+    "polish_name": "Makaron cytrynowy",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "spaghetti", "pl": "spaghetti"},
+      {"it": "limone", "pl": "cytryna"},
+      {"it": "panna", "pl": "śmietanka"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "pepe", "pl": "pieprz"}
+    ],
+    "image": "images/recipes/pasta_al_limone.jpg",
+    "source": "Fot. Luca Nebuloni via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 13,
+    "italian_name": "Pasta con le Sarde",
+    "polish_name": "Makaron z sardynkami",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "bucatini", "pl": "bucatini"},
+      {"it": "sarde", "pl": "sardynki"},
+      {"it": "finocchietto selvatico", "pl": "dziki koper włoski"},
+      {"it": "uvetta", "pl": "rodzynki"},
+      {"it": "pinoli", "pl": "orzeszki piniowe"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "zafferano", "pl": "szafran"}
+    ],
+    "image": "images/recipes/pasta_con_le_sarde.jpg"
+  },
+  {
+    "id": 14,
+    "italian_name": "Pasta alla Puttanesca",
+    "polish_name": "Makaron alla Puttanesca",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "spaghetti", "pl": "spaghetti"},
+      {"it": "pomodori", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "acciughe", "pl": "anchovies"},
+      {"it": "olive nere", "pl": "czarne oliwki"},
+      {"it": "capperi", "pl": "kapary"},
+      {"it": "peperoncino", "pl": "papryczka chili"}
+    ],
+    "image": "images/recipes/pasta_puttanesca.jpg",
+    "source": "Fot. Popo le Chien via Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": 15,
+    "italian_name": "Spaghetti alla Nerano",
+    "polish_name": "Spaghetti alla Nerano",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "spaghetti", "pl": "spaghetti"},
+      {"it": "zucchine", "pl": "cukinia"},
+      {"it": "provolone del Monaco", "pl": "ser provolone"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "basilico", "pl": "bazylia"}
+    ],
+    "image": "images/recipes/spaghetti_alla_nerano.jpg"
+  },
+  {
+    "id": 16,
+    "italian_name": "Pasta alla Boscaiola",
+    "polish_name": "Makaron alla Boscaiola",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "tagliatelle", "pl": "tagliatelle"},
+      {"it": "funghi porcini", "pl": "borowiki"},
+      {"it": "panna", "pl": "śmietanka"},
+      {"it": "salsiccia", "pl": "kiełbasa włoska"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"},
+      {"it": "parmigiano", "pl": "parmezan"}
+    ],
+    "image": "images/recipes/pasta_alla_boscaiola.jpeg"
+  },
+  {
+    "id": 17,
+    "italian_name": "Pasta e Fagioli",
+    "polish_name": "Makaron z fasolą",
+    "category": "zupa",
+    "ingredients": [
+      {"it": "ditalini", "pl": "makaron ditalini"},
+      {"it": "fagioli borlotti", "pl": "fasola borlotti"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "pancetta", "pl": "pancetta (boczek włoski)"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "rosmarino", "pl": "rozmaryn"}
+    ],
+    "image": "images/recipes/pasta_e_fagioli.jpg"
+  },
+  {
+    "id": 18,
+    "italian_name": "Pasta al forno",
+    "polish_name": "Zapiekanka makaronowa",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "rigatoni", "pl": "rigatoni"},
+      {"it": "salsa di pomodoro", "pl": "sos pomidorowy"},
+      {"it": "carne macinata", "pl": "mięso mielone"},
+      {"it": "mozzarella", "pl": "mozzarella"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "besciamella", "pl": "beszamel"}
+    ],
+    "image": "images/recipes/pasta_al_forno.jpg"
+  },
+  {
+    "id": 19,
+    "italian_name": "Tortellini in brodo",
+    "polish_name": "Tortellini w bulionie",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "tortellini", "pl": "tortellini"},
+      {"it": "ripieno di carne", "pl": "farsz mięsny"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "brodo di carne", "pl": "bulion mięsny"},
+      {"it": "noce moscata", "pl": "gałka muszkatołowa"}
+    ],
+    "image": "images/recipes/tortellini_in_brodo.jpg"
+  },
+  {
+    "id": 20,
+    "italian_name": "Ravioli ricotta e spinaci",
+    "polish_name": "Ravioli z ricottą i szpinakiem",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "ravioli", "pl": "ravioli"},
+      {"it": "ricotta", "pl": "ricotta"},
+      {"it": "spinaci", "pl": "szpinak"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "salvia", "pl": "szałwia"}
+    ],
+    "image": "images/recipes/Ravioli_ricotta_e_spinaci.jpeg"
+  },
+  {
+    "id": 21,
+    "italian_name": "Cannelloni ricotta e spinaci",
+    "polish_name": "Cannelloni z ricottą i szpinakiem",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "cannelloni", "pl": "cannelloni"},
+      {"it": "ricotta", "pl": "ricotta"},
+      {"it": "spinaci", "pl": "szpinak"},
+      {"it": "salsa di pomodoro", "pl": "sos pomidorowy"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "besciamella", "pl": "beszamel"}
+    ],
+    "image": "images/recipes/Cannelloni_ricotta_e_spinaci.jpeg"
+  },
+  {
+    "id": 22,
+    "italian_name": "Gnocchi di patate al pomodoro",
+    "polish_name": "Gnocchi ziemniaczane z sosem pomidorowym",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "gnocchi di patate", "pl": "gnocchi ziemniaczane"},
+      {"it": "salsa di pomodoro", "pl": "sos pomidorowy"},
+      {"it": "basilico", "pl": "bazylia"},
+      {"it": "parmigiano", "pl": "parmezan"}
+    ],
+    "image": "images/recipes/Gnocchi_di_patate_al_pomodoro.jpeg"
+  },
+  {
+    "id": 23,
+    "italian_name": "Orecchiette con cime di rapa",
+    "polish_name": "Orecchiette z brokułem rzepkowym",
+    "category": "pasta",
+    "ingredients": [
+      {"it": "orecchiette", "pl": "orecchiette"},
+      {"it": "cime di rapa", "pl": "cime di rapa (brokuł rzepkowy)"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "peperoncino", "pl": "papryczka chili"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/Orecchiette_con_cime_di_rapa.jpeg"
+  },
+  {
+    "id": 24,
+    "italian_name": "Risotto alla Milanese",
+    "polish_name": "Risotto po mediolańsku",
+    "category": "risotto",
+    "ingredients": [
+      {"it": "riso arborio", "pl": "ryż arborio"},
+      {"it": "zafferano", "pl": "szafran"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "brodo di carne", "pl": "bulion mięsny"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "vino bianco", "pl": "białe wino"}
+    ],
+    "image": "images/recipes/risotto_alla_milanese.jpg",
+    "source": "Fot. Number55 via Wikimedia Commons (CC BY-SA 3.0)"
+  },
+  {
+    "id": 25,
+    "italian_name": "Risotto ai funghi porcini",
+    "polish_name": "Risotto z borowikami",
+    "category": "risotto",
+    "ingredients": [
+      {"it": "riso arborio", "pl": "ryż arborio"},
+      {"it": "funghi porcini", "pl": "borowiki"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "brodo", "pl": "bulion"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"}
+    ],
+    "image": "images/recipes/risotto_funghi.jpg"
+  },
+  {
+    "id": 26,
+    "italian_name": "Risotto al nero di seppia",
+    "polish_name": "Risotto z atramentem mątwy",
+    "category": "risotto",
+    "ingredients": [
+      {"it": "riso arborio", "pl": "ryż arborio"},
+      {"it": "nero di seppia", "pl": "atrament z mątwy"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "brodo di pesce", "pl": "bulion rybny"},
+      {"it": "vino bianco", "pl": "białe wino"}
+    ],
+    "image": "images/recipes/Risotto_al_nero_di_seppia.jpeg"
+  },
+  {
+    "id": 27,
+    "italian_name": "Risotto allo zafferano",
+    "polish_name": "Risotto z szafranem",
+    "category": "risotto",
+    "ingredients": [
+      {"it": "riso arborio", "pl": "ryż arborio"},
+      {"it": "zafferano", "pl": "szafran"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "brodo", "pl": "bulion"},
+      {"it": "parmigiano", "pl": "parmezan"}
+    ],
+    "image": "images/recipes/Risotto_allo_zafferano.jpeg"
+  },
+  {
+    "id": 28,
+    "italian_name": "Risotto ai frutti di mare",
+    "polish_name": "Risotto z owocami morza",
+    "category": "risotto",
+    "ingredients": [
+      {"it": "riso arborio", "pl": "ryż arborio"},
+      {"it": "frutti di mare", "pl": "owoce morza"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "brodo di pesce", "pl": "bulion rybny"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"}
+    ],
+    "image": "images/recipes/Risotto_ai_frutti_di_mare.jpeg"
+  },
+  {
+    "id": 29,
+    "italian_name": "Risotto agli asparagi",
+    "polish_name": "Risotto ze szparagami",
+    "category": "risotto",
+    "ingredients": [
+      {"it": "riso arborio", "pl": "ryż arborio"},
+      {"it": "asparagi", "pl": "szparagi"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "brodo", "pl": "bulion"},
+      {"it": "parmigiano", "pl": "parmezan"}
+    ],
+    "image": "images/recipes/Risotto_agli_asparagi.jpeg"
+  },
+  {
+    "id": 30,
+    "italian_name": "Risotto alla zucca",
+    "polish_name": "Risotto z dynią",
+    "category": "risotto",
+    "ingredients": [
+      {"it": "riso arborio", "pl": "ryż arborio"},
+      {"it": "zucca", "pl": "dynia"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "brodo", "pl": "bulion"},
+      {"it": "parmigiano", "pl": "parmezan"}
+    ],
+    "image": "images/recipes/Risotto_alla_zucca.jpeg"
+  },
+  {
+    "id": 31,
+    "italian_name": "Ribollita",
+    "polish_name": "Ribollita",
+    "category": "zupa",
+    "ingredients": [
+      {"it": "cavolo nero", "pl": "jarmuż toskański"},
+      {"it": "fagioli cannellini", "pl": "fasola cannellini"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "carota", "pl": "marchewka"},
+      {"it": "sedano", "pl": "seler"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "pane raffermo", "pl": "czerstwy chleb"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/Ribollita.jpeg"
+  },
+  {
+    "id": 32,
+    "italian_name": "Zuppa di lenticchie",
+    "polish_name": "Zupa z soczewicy",
+    "category": "zupa",
+    "ingredients": [
+      {"it": "lenticchie", "pl": "soczewica"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "carota", "pl": "marchewka"},
+      {"it": "sedano", "pl": "seler"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "brodo vegetale", "pl": "bulion warzywny"}
+    ],
+    "image": "images/recipes/zuppa_di_lenticchie.jpeg"
+  },
+  {
+    "id": 33,
+    "italian_name": "Minestrone",
+    "polish_name": "Minestrone",
+    "category": "zupa",
+    "ingredients": [
+      {"it": "zucchine", "pl": "cukinia"},
+      {"it": "carote", "pl": "marchewki"},
+      {"it": "porri", "pl": "pory"},
+      {"it": "cipolle", "pl": "cebule"},
+      {"it": "sedano", "pl": "seler"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "pomodori", "pl": "pomidory"},
+      {"it": "pasta", "pl": "makaron"},
+      {"it": "fagioli", "pl": "fasola"},
+      {"it": "brodo", "pl": "bulion"},
+      {"it": "cauliflower", "pl": "kalafior"},
+      {"it": "broccoli", "pl": "brokuły"},
+      {"it": "basilico", "pl": "bazylia"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
+      {"it": "sale", "pl": "sól"}
+    ],
+    "image": "images/recipes/Minestrone.jpeg"
+  },
+  {
+    "id": 34,
+    "italian_name": "Acquacotta",
+    "polish_name": "Acquacotta",
+    "category": "zupa",
+    "ingredients": [
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "sedano", "pl": "seler"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "uova", "pl": "jajka"},
+      {"it": "pane", "pl": "chleb"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/Acquacotta.jpeg"
+  },
+  {
+    "id": 35,
+    "italian_name": "Zuppa di verdure",
+    "polish_name": "Zupa jarzynowa",
+    "category": "zupa",
+    "ingredients": [
+      {"it": "zucchine", "pl": "cukinia"},
+      {"it": "carote", "pl": "marchewki"},
+      {"it": "sedano", "pl": "seler"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "patate", "pl": "ziemniaki"},
+      {"it": "fagioli", "pl": "fasola"},
+      {"it": "brodo", "pl": "bulion"}
+    ],
+    "image": "images/recipes/zuppa_di_verdure.jpeg"
+  },
+  {
+    "id": 36,
+    "italian_name": "Polenta con salsiccia",
+    "polish_name": "Polenta z kiełbasą",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "polenta", "pl": "polenta"},
+      {"it": "salsiccia", "pl": "kiełbasa włoska"},
+      {"it": "pomodori", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
+      {"it": "vino rosso", "pl": "czerwone wino"}
+    ],
+    "image": "images/recipes/polenta_con_salsiccia.jpeg"
+  },
+  {
+    "id": 37,
+    "italian_name": "Ossobuco alla Milanese",
+    "polish_name": "Ossobuco po mediolańsku",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "ossobuco", "pl": "gicz cielęca"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "carota", "pl": "marchewka"},
+      {"it": "sedano", "pl": "seler"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "brodo di carne", "pl": "bulion mięsny"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "farina", "pl": "mąka"},
+      {"it": "burro", "pl": "masło"}
+    ],
+    "image": "images/recipes/ossobuco.jpg",
+    "source": "Fot. Mogens Engelund via Wikimedia Commons (CC BY-SA 3.0)"
+  },
+  {
+    "id": 38,
+    "italian_name": "Saltimbocca alla Romana",
+    "polish_name": "Saltimbocca alla Romana",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "fettine di vitello", "pl": "plastry cielęciny"},
+      {"it": "prosciutto", "pl": "szynka parmeńska"},
+      {"it": "salvia", "pl": "szałwia"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "burro", "pl": "masło"}
+    ],
+    "image": "images/recipes/Saltimbocca_alla_Romana.jpeg"
+  },
+  {
+    "id": 39,
+    "italian_name": "Scaloppine al limone",
+    "polish_name": "Scaloppine al limone",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "scaloppine di vitello", "pl": "kotleciki cielęce"},
+      {"it": "limone", "pl": "cytryna"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "farina", "pl": "mąka"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"}
+    ],
+    "image": "images/recipes/Scaloppine_al_limone.jpeg"
+  },
+  {
+    "id": 40,
+    "italian_name": "Arrosto di maiale",
+    "polish_name": "Pieczeń wieprzowa",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "lonza di maiale", "pl": "schab"},
+      {"it": "rosmarino", "pl": "rozmaryn"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/arrosto_di_maiale.jpeg"
+  },
+  {
+    "id": 41,
+    "italian_name": "Cotoletta alla Milanese",
+    "polish_name": "Kotlet po mediolańsku",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "costoletta di vitello", "pl": "kotlet cielęcy"},
+      {"it": "uova", "pl": "jajka"},
+      {"it": "pangrattato", "pl": "bułka tarta"},
+      {"it": "burro chiarificato", "pl": "klarowane masło"},
+      {"it": "limone", "pl": "cytryna"}
+    ],
+    "image": "images/recipes/Cotoletta_alla_Milanese.jpeg"
+  },
+  {
+    "id": 42,
+    "italian_name": "Pollo alla cacciatora",
+    "polish_name": "Kurczak myśliwego",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "pollo", "pl": "kurczak"},
+      {"it": "pomodori", "pl": "pomidory"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "carota", "pl": "marchewka"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "rosmarino", "pl": "rozmaryn"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/Pollo_alla_cacciatora.jpeg"
+  },
+  {
+    "id": 43,
+    "italian_name": "Brasato al Barolo",
+    "polish_name": "Duszone mięso w winie Barolo",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "carne di manzo", "pl": "wołowina"},
+      {"it": "vino Barolo", "pl": "wino Barolo"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "carota", "pl": "marchewka"},
+      {"it": "sedano", "pl": "seler"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "erbe aromatiche", "pl": "zioła"}
+    ],
+    "image": "images/recipes/Brasato_al_Barolo.jpeg"
+  },
+  {
+    "id": 44,
+    "italian_name": "Spezzatino",
+    "polish_name": "Gulasz włoski",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "carne a cubetti", "pl": "mięso w kostkę"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "carota", "pl": "marchewka"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "vino rosso", "pl": "czerwone wino"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"}
+    ],
+    "image": "images/recipes/spezzatino.jpeg"
+  },
+  {
+    "id": 45,
+    "italian_name": "Cacciucco",
+    "polish_name": "Cacciucco",
+    "category": "ryby",
+    "ingredients": [
+      {"it": "pesce misto", "pl": "mieszane ryby"},
+      {"it": "crostacei", "pl": "skorupiaki"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "vino rosso", "pl": "czerwone wino"},
+      {"it": "peperoncino", "pl": "papryczka chili"}
+    ],
+    "image": "images/recipes/Cacciucco.jpeg"
+  },
+  {
+    "id": 46,
+    "italian_name": "Zuppa di pesce",
+    "polish_name": "Zupa rybna",
+    "category": "ryby",
+    "ingredients": [
+      {"it": "pesce", "pl": "ryba"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"},
+      {"it": "vino bianco", "pl": "białe wino"}
+    ],
+    "image": "images/recipes/Zuppa_di_pesce.jpeg"
+  },
+  {
+    "id": 47,
+    "italian_name": "Baccalà alla Vicentina",
+    "polish_name": "Dorsz po wicentyńsku",
+    "category": "ryby",
+    "ingredients": [
+      {"it": "baccalà", "pl": "dorsz solony"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "latte", "pl": "mleko"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
+      {"it": "acciughe", "pl": "anchovies"},
+      {"it": "parmigiano", "pl": "parmezan"}
+    ],
+    "image": "images/recipes/Baccala_alla_Vicentina.jpeg"
+  },
+  {
+    "id": 48,
+    "italian_name": "Polpo alla luciana",
+    "polish_name": "Ośmiornica alla Luciana",
+    "category": "ryby",
+    "ingredients": [
+      {"it": "polpo", "pl": "ośmiornica"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "olive", "pl": "oliwki"},
+      {"it": "capperi", "pl": "kapary"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "peperoncino", "pl": "papryczka chili"}
+    ],
+    "image": "images/recipes/polpo_alla_luciana.jpg",
+    "source": "Fot. Ivana (kalamita) via Wikimedia Commons (CC BY 2.0)"
+  },
+  {
+    "id": 49,
+    "italian_name": "Involtini di vitello",
+    "polish_name": "Roladki cielęce",
+    "category": "mięso",
+    "ingredients": [
+      {"it": "fettine di vitello", "pl": "plastry cielęciny"},
+      {"it": "prosciutto", "pl": "szynka parmeńska"},
+      {"it": "formaggio", "pl": "ser"},
+      {"it": "salvia", "pl": "szałwia"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "burro", "pl": "masło"}
+    ],
+    "image": "images/recipes/Involtini_di_vitello.jpeg"
+  },
+  {
+    "id": 50,
+    "italian_name": "Prosciutto e melone",
+    "polish_name": "Szynka parmeńska z melonem",
+    "category": "przystawka",
+    "ingredients": [
+      {"it": "prosciutto crudo", "pl": "szynka parmeńska"},
+      {"it": "melone", "pl": "melon"}
+    ],
+    "image": "images/recipes/Prosciutto_e_melone.jpeg"
+  },
+  {
+    "id": 51,
+    "italian_name": "Carpaccio di manzo",
+    "polish_name": "Carpaccio z wołowiny",
+    "category": "przystawka",
+    "ingredients": [
+      {"it": "carne di manzo cruda", "pl": "surowa wołowina"},
+      {"it": "olio d'oliva", "pl": "oliwa z oliwek"},
+      {"it": "limone", "pl": "cytryna"},
+      {"it": "parmigiano", "pl": "parmezan"},
+      {"it": "rucola", "pl": "rukola"}
+    ],
+    "image": "images/recipes/Carpaccio_di_manzo_.jpeg"
+  },
+  {
+    "id": 52,
+    "italian_name": "Tiramisù",
+    "polish_name": "Tiramisu",
+    "category": "deser",
+    "ingredients": [
+      {"it": "savoiardi", "pl": "biszkopty"},
+      {"it": "mascarpone", "pl": "mascarpone"},
+      {"it": "uova", "pl": "jajka"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "caffè", "pl": "kawa"},
+      {"it": "cacao", "pl": "kakao"},
+      {"it": "marsala", "pl": "Marsala"}
+    ],
+    "image": "images/recipes/tiramisu.jpg",
+    "source": "Fot. Navneet Sharma via Wikimedia Commons (CC BY-SA 4.0)"
+  },
+  {
+    "id": 53,
+    "italian_name": "Panna cotta",
+    "polish_name": "Panna cotta",
+    "category": "deser",
+    "ingredients": [
+      {"it": "panna", "pl": "śmietanka"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "gelatina", "pl": "żelatyna"},
+      {"it": "vaniglia", "pl": "wanilia"},
+      {"it": "salsa di frutti di bosco", "pl": "sos z owoców leśnych"}
+    ],
+    "image": "images/recipes/Panna_cotta.jpeg"
+  },
+  {
+    "id": 54,
+    "italian_name": "Cannoli siciliani",
+    "polish_name": "Cannoli sycylijskie",
+    "category": "deser",
+    "ingredients": [
+      {"it": "cannoli (guscio)", "pl": "skorupki cannoli"},
+      {"it": "ricotta", "pl": "ricotta"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "canditi", "pl": "kandyzowane owoce"},
+      {"it": "cioccolato", "pl": "czekolada"}
+    ],
+    "image": "images/recipes/Cannoli_siciliani.jpeg"
+  },
+  {
+    "id": 55,
+    "italian_name": "Gelato",
+    "polish_name": "Gelato (lody włoskie)",
+    "category": "deser",
+    "ingredients": [
+      {"it": "latte", "pl": "mleko"},
+      {"it": "panna", "pl": "śmietanka"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "tuorli d'uovo", "pl": "żółtka"},
+      {"it": "vaniglia", "pl": "wanilia"}
+    ],
+    "image": "images/recipes/gelato.jpeg"
+  },
+  {
+    "id": 56,
+    "italian_name": "Zabaglione (zabaione)",
+    "polish_name": "Zabajone",
+    "category": "deser",
+    "ingredients": [
+      {"it": "tuorli d'uovo", "pl": "żółtka"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "vino Marsala", "pl": "wino Marsala"}
+    ],
+    "image": "images/recipes/Zabaglione_(zabaione).jpeg"
+  },
+  {
+    "id": 57,
+    "italian_name": "Cassata siciliana",
+    "polish_name": "Cassata sycylijska",
+    "category": "deser",
+    "ingredients": [
+      {"it": "pan di Spagna", "pl": "biszkopt"},
+      {"it": "ricotta", "pl": "ricotta"},
+      {"it": "canditi", "pl": "kandyzowane owoce"},
+      {"it": "frutta candita", "pl": "owoce kandyzowane"},
+      {"it": "marzapane", "pl": "marcepan"}
+    ],
+    "image": "images/recipes/Cassata_siciliana.jpeg"
+  },
+  {
+    "id": 58,
+    "italian_name": "Panettone",
+    "polish_name": "Panettone",
+    "category": "deser",
+    "ingredients": [
+      {"it": "impasto (farina, lievito)", "pl": "ciasto (mąka, drożdże)"},
+      {"it": "uvetta", "pl": "rodzynki"},
+      {"it": "canditi", "pl": "kandyzowane owoce"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "zucchero", "pl": "cukier"}
+    ],
+    "image": "images/recipes/Panettone.jpeg"
+  },
+  {
+    "id": 59,
+    "italian_name": "Pandoro",
+    "polish_name": "Pandoro",
+    "category": "deser",
+    "ingredients": [
+      {"it": "impasto (farina, lievito)", "pl": "ciasto (mąka, drożdże)"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "burro", "pl": "masło"},
+      {"it": "uova", "pl": "jajka"},
+      {"it": "vaniglia", "pl": "wanilia"}
+    ],
+    "image": "images/recipes/Pandoro.jpeg"
+  },
+  {
+    "id": 60,
+    "italian_name": "Zeppole di San Giuseppe",
+    "polish_name": "Pączki Zeppole",
+    "category": "deser",
+    "ingredients": [
+      {"it": "pasta choux", "pl": "ciasto parzone"},
+      {"it": "crema pasticcera", "pl": "krem cukierniczy"},
+      {"it": "zucchero a velo", "pl": "cukier puder"},
+      {"it": "amarene sciroppate", "pl": "wiśnie w syropie"}
+    ],
+    "image": "images/recipes/Zeppole_di_San_Giuseppe.jpeg"
+  },
+  {
+    "id": 61,
+    "italian_name": "Sfogliatella",
+    "polish_name": "Sfogliatella",
+    "category": "deser",
+    "ingredients": [
+      {"it": "pasta sfoglia", "pl": "ciasto francuskie"},
+      {"it": "semolino", "pl": "semolina"},
+      {"it": "ricotta", "pl": "ricotta"},
+      {"it": "canditi", "pl": "kandyzowane owoce"},
+      {"it": "cannella", "pl": "cynamon"}
+    ],
+    "image": "images/recipes/Sfogliatella.jpeg"
+  },
+  {
+    "id": 62,
+    "italian_name": "Babà al rum",
+    "polish_name": "Babà z rumem",
+    "category": "deser",
+    "ingredients": [
+      {"it": "pasta lievitata", "pl": "ciasto drożdżowe"},
+      {"it": "sciroppo al rum", "pl": "syrop rumowy"}
+    ],
+    "image": "images/recipes/baba_al_rum.jpeg"
+  },
+  {
+    "id": 63,
+    "italian_name": "Amaretti",
+    "polish_name": "Ciastka amaretti",
+    "category": "deser",
+    "ingredients": [
+      {"it": "mandorle", "pl": "migdały"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "albumi", "pl": "białka"},
+      {"it": "estratto di mandorla", "pl": "ekstrakt migdałowy"}
+    ],
+    "image": "images/recipes/Amaretti.jpeg"
+  },
+  {
+    "id": 64,
+    "italian_name": "Cantucci (biscotti)",
+    "polish_name": "Cantucci (biscotti)",
+    "category": "deser",
+    "ingredients": [
+      {"it": "farina", "pl": "mąka"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "mandorle", "pl": "migdały"},
+      {"it": "uova", "pl": "jajka"},
+      {"it": "burro", "pl": "masło"}
+    ],
+    "image": "images/recipes/Cantucci_(biscotti).jpeg"
+  },
+  {
+    "id": 65,
+    "italian_name": "Pasticciotto leccese",
+    "polish_name": "Pasticciotto z Lecce",
+    "category": "deser",
+    "ingredients": [
+      {"it": "pasta frolla", "pl": "ciasto kruche"},
+      {"it": "crema pasticcera", "pl": "krem cukierniczy"},
+      {"it": "amarene", "pl": "wiśnie"}
+    ],
+    "image": "images/recipes/pasticciotto_leccese.jpeg"
+  },
+  {
+    "id": 66,
+    "italian_name": "Semifreddo al caffè",
+    "polish_name": "Semifreddo kawowe",
+    "category": "deser",
+    "ingredients": [
+      {"it": "panna", "pl": "śmietanka"},
+      {"it": "zucchero", "pl": "cukier"},
+      {"it": "caffè", "pl": "kawa"},
+      {"it": "uova", "pl": "jajka"}
+    ],
+    "image": "images/recipes/semifreddo__al_caffe.jpeg"
+  },
+  {
+    "id": 67,
+    "italian_name": "Struffoli",
+    "polish_name": "Struffoli",
+    "category": "deser",
+    "ingredients": [
+      {"it": "palline di pasta fritta", "pl": "kulki smażonego ciasta"},
+      {"it": "miele", "pl": "miód"},
+      {"it": "zuccherini", "pl": "kolorowe posypki"}
+    ],
+    "image": "images/recipes/Struffoli.jpeg"
+  },
+  {
+    "id": 68,
+    "italian_name": "Colomba pasquale",
+    "polish_name": "Colomba wielkanocna",
+    "category": "deser",
+    "ingredients": [
+      {"it": "impasto (jak panettone)", "pl": "ciasto jak panettone"},
+      {"it": "canditi", "pl": "kandyzowane owoce"},
+      {"it": "mandorle", "pl": "migdały"},
+      {"it": "glassa di zucchero", "pl": "lukier"}
+    ],
+    "image": "images/recipes/Colomba_pasquale.jpeg"
+  },
+  {
+    "id": 69,
+    "italian_name": "Sarde in saor",
+    "polish_name": "Sardynki w saor",
+    "category": "przystawka",
+    "ingredients": [
+      {"it": "sarde", "pl": "sardynki"},
+      {"it": "cipolla", "pl": "cebula"},
+      {"it": "aceto", "pl": "ocet"},
+      {"it": "pinoli", "pl": "orzeszki piniowe"},
+      {"it": "uvetta", "pl": "rodzynki"}
+    ],
+    "image": "images/recipes/Sarde_in_saor.jpeg"
+  },
+  {
+    "id": 70,
+    "italian_name": "Fritto misto di pesce",
+    "polish_name": "Fritto misto (smażone owoce morza)",
+    "category": "ryby",
+    "ingredients": [
+      {"it": "calamari", "pl": "kalmary"},
+      {"it": "gamberi", "pl": "krewetki"},
+      {"it": "pesciolini", "pl": "małe rybki"},
+      {"it": "farina", "pl": "mąka"},
+      {"it": "olio per friggere", "pl": "olej do smażenia"},
+      {"it": "limone", "pl": "cytryna"}
+    ],
+    "image": "images/recipes/Fritto_misto_di_pesce.jpeg"
+  },
+  {
+    "id": 71,
+    "italian_name": "Gamberi alla Busara",
+    "polish_name": "Krewetki alla busara",
+    "category": "ryby",
+    "ingredients": [
+      {"it": "gamberi", "pl": "krewetki"},
+      {"it": "pomodoro", "pl": "pomidory"},
+      {"it": "aglio", "pl": "czosnek"},
+      {"it": "vino bianco", "pl": "białe wino"},
+      {"it": "prezzemolo", "pl": "natka pietruszki"},
+      {"it": "peperoncino", "pl": "papryczka chili"}
+    ],
+    "image": "images/recipes/gamberi_alla_busara.jpeg"
+  }
+];
+
