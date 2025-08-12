@@ -637,7 +637,7 @@
         "pl": "szałwia"
       }
     ],
-    "image": "images/recipes/Ravioli_ricotta_e_spinaci.jpg"
+    "image": "images/recipes/ravioli_ricotta_e_spinaci.jpg"
   },
   {
     "id": 21,
@@ -670,7 +670,7 @@
         "pl": "beszamel"
       }
     ],
-    "image": "images/recipes/Cannelloni_ricotta_e_spinaci.jpg"
+    "image": "images/recipes/cannelloni_ricotta_e_spinaci.jpg"
   },
   {
     "id": 22,
@@ -695,7 +695,7 @@
         "pl": "parmezan"
       }
     ],
-    "image": "images/recipes/Gnocchi_di_patate_al_pomodoro.jpg"
+    "image": "images/recipes/gnocchi_di_patate_al_pomodoro.jpg"
   },
   {
     "id": 23,
@@ -728,7 +728,7 @@
         "pl": "anchovies"
       }
     ],
-    "image": "images/recipes/Orecchiette_con_cime_di_rapa.jpg"
+    "image": "images/recipes/orecchiette_con_cime_di_rapa.jpg"
   },
   {
     "id": 24,
@@ -1219,7 +1219,7 @@
         "pl": "natka pietruszki"
       }
     ],
-    "image": "images/recipes/Risotto_al_nero_di_seppia.jpg"
+    "image": "images/recipes/risotto_al_nero_di_seppia.jpg"
   },
   {
     "id": 39,
@@ -1252,7 +1252,7 @@
         "pl": "natka pietruszki"
       }
     ],
-    "image": "images/recipes/Risotto_ai_frutti_di_mare.jpg"
+    "image": "images/recipes/risotto_ai_frutti_di_mare.jpg"
   },
   {
     "id": 40,
@@ -1359,7 +1359,7 @@
         "pl": "parmezan"
       }
     ],
-    "image": "images/recipes/Minestrone.jpg"
+    "image": "images/recipes/minestrone.jpg"
   },
   {
     "id": 43,
@@ -1400,7 +1400,7 @@
         "pl": "pomidory"
       }
     ],
-    "image": "images/recipes/Ribollita.jpg"
+    "image": "images/recipes/ribollita.jpg"
   },
   {
     "id": 44,
@@ -1470,7 +1470,7 @@
         "pl": "oliwa z oliwek"
       }
     ],
-    "image": "images/recipes/Acquacotta.jpg"
+    "image": "images/recipes/acquacotta.jpg"
   },
   {
     "id": 46,
@@ -1573,7 +1573,7 @@
         "pl": "mąka"
       }
     ],
-    "image": "images/recipes/Saltimbocca_alla_Romana.jpg"
+    "image": "images/recipes/saltimbocca_alla_romana.jpg"
   },
   {
     "id": 49,
@@ -1614,7 +1614,7 @@
         "pl": "rozmaryn"
       }
     ],
-    "image": "images/recipes/Pollo_alla_cacciatora.jpg"
+    "image": "images/recipes/pollo_alla_cacciatora.jpg"
   },
   {
     "id": 50,
@@ -1684,7 +1684,7 @@
         "pl": "cytryna"
       }
     ],
-    "image": "images/recipes/Cotoletta_alla_Milanese.jpg"
+    "image": "images/recipes/cotoletta_alla_milanese.jpg"
   },
   {
     "id": 52,
@@ -2383,7 +2383,7 @@
         "pl": "papryczka chili"
       }
     ],
-    "image": "images/recipes/Cacciucco.jpg"
+    "image": "images/recipes/cacciucco.jpg"
   },
   {
     "id": 75,
@@ -2412,7 +2412,7 @@
         "pl": "białe wino"
       }
     ],
-    "image": "images/recipes/Zuppa_di_pesce.jpg"
+    "image": "images/recipes/zuppa_di_pesce.jpg"
   },
   {
     "id": 76,
@@ -2445,7 +2445,7 @@
         "pl": "parmezan"
       }
     ],
-    "image": "images/recipes/Baccala_alla_Vicentina.jpg"
+    "image": "images/recipes/baccala_alla_vicentina.jpg"
   },
   {
     "id": 77,
@@ -2511,7 +2511,7 @@
         "pl": "masło"
       }
     ],
-    "image": "images/recipes/Involtini_di_vitello.jpg"
+    "image": "images/recipes/involtini_di_vitello.jpg"
   },
   {
     "id": 79,
@@ -2528,7 +2528,7 @@
         "pl": "melon"
       }
     ],
-    "image": "images/recipes/Prosciutto_e_melone.jpg"
+    "image": "images/recipes/prosciutto_e_melone.jpg"
   },
   {
     "id": 80,
@@ -2557,7 +2557,7 @@
         "pl": "rukola"
       }
     ],
-    "image": "images/recipes/Carpaccio_di_manzo_.jpg"
+    "image": "images/recipes/carpaccio_di_manzo_.jpg"
   },
   {
     "id": 81,
@@ -2623,7 +2623,7 @@
         "pl": "sos z owoców leśnych"
       }
     ],
-    "image": "images/recipes/Panna_cotta.jpg"
+    "image": "images/recipes/panna_cotta.jpg"
   },
   {
     "id": 83,
@@ -2652,7 +2652,7 @@
         "pl": "czekolada"
       }
     ],
-    "image": "images/recipes/Cannoli_siciliani.jpg"
+    "image": "images/recipes/cannoli_siciliani.jpg"
   },
   {
     "id": 84,
@@ -2702,7 +2702,7 @@
         "pl": "wino Marsala"
       }
     ],
-    "image": "images/recipes/Zabaglione_(zabaione).jpg"
+    "image": "images/recipes/zabaglione_(zabaione).jpg"
   },
   {
     "id": 86,
@@ -2731,7 +2731,7 @@
         "pl": "marcepan"
       }
     ],
-    "image": "images/recipes/Cassata_siciliana.jpg"
+    "image": "images/recipes/cassata_siciliana.jpg"
   },
   {
     "id": 87,
@@ -2760,7 +2760,7 @@
         "pl": "cukier"
       }
     ],
-    "image": "images/recipes/Panettone.jpg"
+    "image": "images/recipes/panettone.jpg"
   },
   {
     "id": 88,
@@ -2789,7 +2789,7 @@
         "pl": "wanilia"
       }
     ],
-    "image": "images/recipes/Pandoro.jpg"
+    "image": "images/recipes/pandoro.jpg"
   },
   {
     "id": 89,
@@ -2814,7 +2814,7 @@
         "pl": "wiśnie w syropie"
       }
     ],
-    "image": "images/recipes/Zeppole_di_San_Giuseppe.jpg"
+    "image": "images/recipes/zeppole_di_san_giuseppe.jpg"
   },
   {
     "id": 90,
@@ -2843,7 +2843,7 @@
         "pl": "cynamon"
       }
     ],
-    "image": "images/recipes/Sfogliatella.jpg"
+    "image": "images/recipes/sfogliatella.jpg"
   },
   {
     "id": 91,
@@ -2885,7 +2885,7 @@
         "pl": "ekstrakt migdałowy"
       }
     ],
-    "image": "images/recipes/Amaretti.jpg"
+    "image": "images/recipes/amaretti.jpg"
   },
   {
     "id": 93,
@@ -2914,7 +2914,7 @@
         "pl": "masło"
       }
     ],
-    "image": "images/recipes/Cantucci_(biscotti).jpg"
+    "image": "images/recipes/cantucci_(biscotti).jpg"
   },
   {
     "id": 94,
@@ -2981,7 +2981,7 @@
         "pl": "kolorowe posypki"
       }
     ],
-    "image": "images/recipes/Struffoli.jpg"
+    "image": "images/recipes/struffoli.jpg"
   },
   {
     "id": 97,
@@ -3006,7 +3006,7 @@
         "pl": "lukier"
       }
     ],
-    "image": "images/recipes/Colomba_pasquale.jpg"
+    "image": "images/recipes/colomba_pasquale.jpg"
   },
   {
     "id": 98,
@@ -3035,7 +3035,7 @@
         "pl": "rodzynki"
       }
     ],
-    "image": "images/recipes/Sarde_in_saor.jpg"
+    "image": "images/recipes/sarde_in_saor.jpg"
   },
   {
     "id": 99,
@@ -3068,7 +3068,7 @@
         "pl": "cytryna"
       }
     ],
-    "image": "images/recipes/Fritto_misto_di_pesce.jpg"
+    "image": "images/recipes/fritto_misto_di_pesce.jpg"
   },
   {
     "id": 100,
