@@ -306,6 +306,11 @@ summary::-webkit-details-marker {
 
 .recipe-description .pl-desc {
   color: var(--color-red);
+  font-style: italic;
+}
+
+.recipe-description .desc-pair {
+  margin-bottom: 0.5em;
 }
 
 /* Game controls */
