@@ -10,7 +10,10 @@ const categoryLabels = {
   'mięso': 'MIĘSO',
   'ryby': 'RYBY',
   'przystawka': 'PRZYSTAWKI',
-  'deser': 'DESERY'
+  'deser': 'DESERY',
+  'pizza': 'PIZZA',
+  'pieczywo': 'PIECZYWO',
+  'warzywa': 'WARZYWA'
 };
 
 // Mapping of category codes to image file names located in images/categories
@@ -21,7 +24,10 @@ const categoryImages = {
   'mięso': 'categories/mieso.png',
   'ryby': 'categories/ryby.png',
   'przystawka': 'categories/przystawka.png',
-  'deser': 'categories/deser.png'
+  'deser': 'categories/deser.png',
+  'pizza': 'categories/pizza.png',
+  'pieczywo': 'categories/pieczywo.png',
+  'warzywa': 'categories/warzywa.png'
 };
 
 // Generic cooking instructions per category in Italian and Polish. Placeholders
