@@ -44,8 +44,9 @@ function updateCurrentPlayer() {
   currentPlayer = selected ? selected.value : 'Kasia';
 }
 
-// Initialize event listeners and scoreboard
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize game page after recipe data has been loaded via fetch.
+// Called from game.html once `window.recipesData` is available.
+window.initGamePage = function () {
   renderScoreboard();
   initGameData();
   // Game buttons
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('input[name="current-player"]').forEach((radio) => {
     radio.addEventListener('change', updateCurrentPlayer);
   });
-});
+};
 
 // MEMORY GAME
 function startMemoryGame() {

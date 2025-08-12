@@ -56,9 +56,18 @@
     </div>
   </div>
 
-  <!-- Dane przepisów -->
-  <script src="js/data.js"></script>
   <!-- Skrypt diagnostyczny -->
   <script src="js/diagnostics.js"></script>
+  <script>
+    fetch('data/recipes.json')
+      .then((res) => res.json())
+      .then((data) => {
+        window.recipesData = data;
+        if (typeof initDiagnostics === 'function') {
+          initDiagnostics();
+        }
+      })
+      .catch((err) => console.error('Błąd ładowania danych diagnostycznych:', err));
+  </script>
 </body>
 </html>

@@ -169,6 +169,7 @@
   toggleErrorsBtn.addEventListener("click", () => { onlyErrors = !onlyErrors; toggleErrorsBtn.textContent = onlyErrors ? "Pokaż wszystkie" : "Pokaż tylko błędy"; applyFilter(); });
   exportCsvBtn.addEventListener("click", () => exportCsv(lastRows));
 
-  // automatyczny start przy wejściu na stronę
-  window.addEventListener("load", runAudit);
+  // Expose initialization function so HTML can trigger the audit
+  // after recipe data has been loaded via fetch.
+  window.initDiagnostics = runAudit;
 })();
