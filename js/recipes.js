@@ -195,10 +195,10 @@ function displayRecipes() {
 
       const summaryEl = document.createElement('summary');
       summaryEl.className = 'recipe-summary';
-      // Create a title span containing Italian and Polish names. We no longer
-      // display images on individual recipe rows; only category headers have images.
+      // Create a title span containing the recipe number, Italian name and Polish name.
+      // We no longer display images on individual recipe rows; only category headers have images.
       const titleSpan = document.createElement('span');
-      titleSpan.innerHTML = `<strong>${recipe.italian_name}</strong> / ${recipe.polish_name}`;
+      titleSpan.innerHTML = `<strong>${recipe.id}. ${recipe.italian_name}</strong> / ${recipe.polish_name}`;
       summaryEl.appendChild(titleSpan);
       detailsEl.appendChild(summaryEl);
 
