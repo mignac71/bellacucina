@@ -1114,7 +1114,7 @@
     "id": 36,
     "italian_name": "Risotto alla Milanese",
     "polish_name": "Risotto alla Milanese",
-    "category": "ryż",
+    "category": "risotto",
     "ingredients": [
       {
         "it": "riso arborio",
@@ -1151,7 +1151,7 @@
     "id": 37,
     "italian_name": "Risotto ai funghi porcini",
     "polish_name": "Risotto z borowikami",
-    "category": "ryż",
+    "category": "risotto",
     "ingredients": [
       {
         "it": "riso arborio",
@@ -1188,7 +1188,7 @@
     "id": 38,
     "italian_name": "Risotto al nero di seppia",
     "polish_name": "Risotto z atramentem kałamarnicy",
-    "category": "ryż",
+    "category": "risotto",
     "ingredients": [
       {
         "it": "riso arborio",
@@ -1225,7 +1225,7 @@
     "id": 39,
     "italian_name": "Risotto ai frutti di mare",
     "polish_name": "Risotto z owocami morza",
-    "category": "ryż",
+    "category": "risotto",
     "ingredients": [
       {
         "it": "riso arborio",
