@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bella Cucina — Panel diagnostyczny</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .diag-wrap { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+    .diag-actions { display:flex; gap:8px; flex-wrap: wrap; margin: 12px 0 16px; }
+    .diag-actions button { padding:10px 14px; border-radius:10px; border:1px solid #ccc; cursor:pointer; }
+    .diag-stats { display:flex; gap:16px; flex-wrap: wrap; margin: 8px 0 16px; }
+    .badge { padding:6px 10px; border-radius:999px; background:#f3f3f3; border:1px solid #e2e2e2; }
+    .badge.ok { background:#eaf7ea; border-color:#bfe3bf; }
+    .badge.err { background:#ffefef; border-color:#ffcccc; }
+    table.diag { width:100%; border-collapse: collapse; }
+    table.diag th, table.diag td { border-bottom:1px solid #eee; padding:8px 10px; vertical-align: top; }
+    table.diag th { text-align:left; background:#fafafa; position: sticky; top: 0; z-index: 1; }
+    tr.err td { background: #fff7f7; }
+    tr.warn td { background: #fffcef; }
+    .nowrap { white-space: nowrap; }
+    .muted { color:#777; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+  </style>
+</head>
+<body>
+  <div class="diag-wrap">
+    <h1>Panel diagnostyczny — zdjęcia przepisów</h1>
+    <p class="muted">Ta strona skanuje <code class="mono">window.recipesData</code>, sprawdza właściwość <code class="mono">image</code> oraz próbuje wczytać obraz (onload/onerror).</p>
+
+    <div class="diag-actions">
+      <button id="runBtn">▶︎ Uruchom test</button>
+      <button id="toggleErrorsBtn">Pokaż tylko błędy</button>
+      <button id="exportCsvBtn">Eksportuj CSV</button>
+      <label class="muted" style="display:flex; align-items:center; gap:6px;">
+        <input type="checkbox" id="dupCheck"> Wykryj duplikaty ścieżek
+      </label>
+    </div>
+
+    <div id="stats" class="diag-stats" aria-live="polite"></div>
+
+    <div style="overflow:auto; max-height: 70vh; border:1px solid #eee; border-radius:12px;">
+      <table class="diag" id="resultsTbl">
+        <thead>
+          <tr>
+            <th class="nowrap">ID</th>
+            <th>Nazwa (IT / PL)</th>
+            <th>Kategoria</th>
+            <th>Ścieżka</th>
+            <th>Status</th>
+            <th>Podgląd</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Dane przepisów -->
+  <script src="js/data.js"></script>
+  <!-- Skrypt diagnostyczny -->
+  <script src="js/diagnostics.js"></script>
+</body>
+</html>

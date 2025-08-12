@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Przepisy – Bella Cucina</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-dH9z5c6BAV5lpZdscOSgnUUuY+2r78JFG6ESZsCp2BGhj9x4t3iPza6ArVHMV0Pux+uAoH+g9oKSM8d1Ji4EVw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="hero small-hero">
+      <img src="images/italian_town.png" alt="Urokliwe włoskie miasteczko" class="hero-img" />
+    </header>
+    <section class="page-title container">
+      <h1>Przepisy</h1>
+      <p class="tagline">Ponad sto dań na każdą okazję</p>
+    </section>
+
+    <main class="container">
+      <section class="controls">
+        <div class="back-link">
+          <a href="index.html"><i class="fas fa-arrow-left"></i> Powrót</a>
+        </div>
+        <div class="filter-row">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Szukaj przepisu..."
+          />
+          <select id="category-filter">
+            <option value="all">Wszystkie kategorie</option>
+            <option value="pasta">Pasta</option>
+            <option value="risotto">Risotto</option>
+            <option value="zupa">Zupy</option>
+            <option value="mięso">Mięsa</option>
+            <option value="ryby">Ryby</option>
+            <option value="przystawka">Przystawki</option>
+            <option value="deser">Desery</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="recipe-list" id="recipe-list">
+        <!-- recipes inserted here -->
+      </section>
+    </main>
+
+    <script src="js/data.js"></script>
+    <!-- Load detailed instructions before recipes.js so that recipeInstructions
+         is available for each recipe. -->
+    <script src="js/instructions.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/recipes.js"></script>
+  </body>
+</html>
