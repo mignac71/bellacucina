@@ -97,7 +97,12 @@ function loadItalianVoice(callback) {
       return;
     }
     // Try to load saved voice from localStorage
-    const savedName = localStorage.getItem('bella_it_voice');
+    let savedName = null;
+    try {
+      savedName = localStorage.getItem('bella_it_voice');
+    } catch (e) {
+      console.warn('localStorage unavailable, cannot load voice preference:', e);
+    }
     let chosen = null;
     if (savedName) {
       chosen = voices.find(v => v.name === savedName);
@@ -107,7 +112,11 @@ function loadItalianVoice(callback) {
     }
     ITALIAN_VOICE = chosen;
     if (chosen) {
-      localStorage.setItem('bella_it_voice', chosen.name);
+      try {
+        localStorage.setItem('bella_it_voice', chosen.name);
+      } catch (e) {
+        console.warn('localStorage unavailable, cannot save voice preference:', e);
+      }
     }
     callback(chosen);
   };
