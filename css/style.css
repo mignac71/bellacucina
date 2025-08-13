@@ -98,6 +98,12 @@ h1, h2 {
   max-height: 100vh;
 }
 
+/* Hero image on the home page is reduced to 60% width and centered */
+.home-hero .hero-img {
+  width: 60%;
+  margin: 0 auto;
+}
+
 /* Page title section below hero */
 .page-title {
   text-align: center;
