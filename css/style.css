@@ -250,6 +250,22 @@ footer {
   color: var(--color-red);
 }
 
+/* Reusable styling for Italian words with speaker icons */
+.it-word {
+  display: inline-flex;
+  align-items: center;
+}
+
+.speak-icon {
+  margin-left: 6px;
+  color: var(--color-green);
+  cursor: pointer;
+}
+
+.speak-icon:hover {
+  color: var(--color-red);
+}
+
 /* Category sections on recipe page */
 .category-section {
   margin-bottom: 40px;
