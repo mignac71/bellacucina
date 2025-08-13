@@ -32,6 +32,7 @@
       <button id="runBtn">▶︎ Uruchom test</button>
       <button id="toggleErrorsBtn">Pokaż tylko błędy</button>
       <button id="exportCsvBtn">Eksportuj CSV</button>
+      <button id="reset-scores" class="reset-btn">Resetuj punkty</button>
       <label class="muted" style="display:flex; align-items:center; gap:6px;">
         <input type="checkbox" id="dupCheck"> Wykryj duplikaty ścieżek
       </label>
@@ -57,6 +58,7 @@
   </div>
 
   <!-- Skrypt diagnostyczny -->
+  <script src="js/main.js"></script>
   <script src="js/diagnostics.js"></script>
   <script>
     fetch('data/recipes.json')
