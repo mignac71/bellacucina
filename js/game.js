@@ -254,6 +254,8 @@ window.initGamePage = function () {
         startIngredientGame();
       } else if (game === 'translation') {
         startTranslationGame();
+      } else if (game === 'restaurant') {
+        startRestaurantGame();
       }
     });
   });
@@ -630,4 +632,157 @@ function evaluateTranslationAnswer(btn, chosen, correct, wrapper) {
     newTranslationRound(wrapper.parentElement);
   });
   wrapper.appendChild(nextBtn);
+}
+
+// --- Restaurant role-play game ---
+const restaurantDialogues = [
+  {
+    question: 'Buongiorno! Desidera ordinare qualcosa da bere?',
+    answers: [
+      "Sì, un bicchiere d'acqua, per favore.",
+      "Dov'è il bagno?",
+      'No, il conto per favore.',
+    ],
+    correct: 0,
+    translation: 'Tak, poproszę szklankę wody.',
+  },
+  {
+    question: 'È pronto per ordinare?',
+    answers: [
+      'Sì, vorrei la lasagna.',
+      'No, solo il conto.',
+      'A che ora chiudete?',
+    ],
+    correct: 0,
+    translation: 'Tak, poproszę lasagne.',
+  },
+  {
+    question: 'Tutto bene con il pasto?',
+    answers: [
+      'Sì, è delizioso, grazie!',
+      'Vorrei un taxi.',
+      'Dove posso pagare?',
+    ],
+    correct: 0,
+    translation: 'Tak, jest pyszne, dziękuję!',
+  },
+  {
+    question: 'Le porto il conto?',
+    answers: [
+      'Sì, il conto per favore.',
+      'Un altro dolce, per favore.',
+      "Una bottiglia d'olio, grazie.",
+    ],
+    correct: 0,
+    translation: 'Tak, poproszę rachunek.',
+  },
+];
+
+let restaurantStep = 0;
+let restaurantCorrect = 0;
+
+function startRestaurantGame() {
+  restaurantStep = 0;
+  restaurantCorrect = 0;
+  const container = document.getElementById('game-container');
+  container.innerHTML = '';
+  showRestaurantRound(container);
+}
+
+function showRestaurantRound(container) {
+  const dialog = restaurantDialogues[restaurantStep];
+  const wrapper = document.createElement('div');
+  wrapper.className = 'restaurant-game';
+
+  const questionEl = document.createElement('div');
+  questionEl.className = 'question';
+  questionEl.appendChild(createItalianWordElement(dialog.question));
+  wrapper.appendChild(questionEl);
+
+  const answersDiv = document.createElement('div');
+  answersDiv.className = 'answers';
+  dialog.answers.forEach((ans, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.appendChild(createItalianWordElement(ans));
+    btn.addEventListener('click', () => {
+      evaluateRestaurantAnswer(btn, idx, dialog, wrapper, container);
+    });
+    answersDiv.appendChild(btn);
+  });
+  wrapper.appendChild(answersDiv);
+
+  container.innerHTML = '';
+  container.appendChild(wrapper);
+  addExitButton(container);
+  pronounceItalian(dialog.question);
+}
+
+function evaluateRestaurantAnswer(btn, idx, dialog, wrapper, container) {
+  const buttons = wrapper.querySelectorAll('.answer-btn');
+  buttons.forEach((b, i) => {
+    b.disabled = true;
+    if (i === dialog.correct) {
+      b.classList.add('correct');
+    }
+  });
+  let points = 0;
+  if (idx === dialog.correct) {
+    btn.classList.add('correct');
+    points = 1;
+    restaurantCorrect++;
+  } else {
+    btn.classList.add('wrong');
+  }
+  addPoints(points);
+  const result = document.createElement('p');
+  result.style.marginTop = '10px';
+  if (points > 0) {
+    result.textContent = 'Poprawna odpowiedź! +1 punkt';
+  } else {
+    result.textContent = 'Błędna odpowiedź. Prawidłowo: ';
+    result.appendChild(createItalianWordElement(dialog.answers[dialog.correct]));
+  }
+  wrapper.appendChild(result);
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'submit-btn';
+  nextBtn.textContent =
+    restaurantStep < restaurantDialogues.length - 1 ? 'Następna scena' : 'Zakończ';
+  nextBtn.addEventListener('click', () => {
+    restaurantStep++;
+    if (restaurantStep < restaurantDialogues.length) {
+      showRestaurantRound(container);
+    } else {
+      showRestaurantSummary(container);
+    }
+  });
+  wrapper.appendChild(nextBtn);
+}
+
+function showRestaurantSummary(container) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'restaurant-summary';
+
+  const scoreInfo = document.createElement('p');
+  scoreInfo.style.textAlign = 'center';
+  scoreInfo.textContent = `Zdobyte punkty: ${restaurantCorrect} / ${restaurantDialogues.length}`;
+  wrapper.appendChild(scoreInfo);
+
+  const heading = document.createElement('h3');
+  heading.textContent = 'Poznane zwroty';
+  wrapper.appendChild(heading);
+
+  const list = document.createElement('ul');
+  restaurantDialogues.forEach((d) => {
+    const li = document.createElement('li');
+    li.appendChild(createItalianWordElement(d.answers[d.correct]));
+    li.appendChild(document.createTextNode(' – ' + d.translation));
+    list.appendChild(li);
+  });
+  wrapper.appendChild(list);
+
+  container.innerHTML = '';
+  container.appendChild(wrapper);
+  addExitButton(container);
 }
