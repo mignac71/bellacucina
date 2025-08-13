@@ -47,10 +47,18 @@ h1, h2 {
   color: var(--text-dark);
   font-weight: bold;
   padding: 10px 0;
+  display: flex;
+  align-items: center;
 }
 
 .top-nav a:hover {
   color: var(--color-red);
+}
+
+.top-nav img {
+  height: 24px;
+  width: 24px;
+  display: block;
 }
 
 /* Hero section now contains only an image. Image scales with viewport */
@@ -88,6 +96,12 @@ h1, h2 {
      entire illustration remains visible without requiring vertical
      scrolling. This works well for landscape‑oriented images. */
   max-height: 100vh;
+}
+
+/* Hero image on the home page is reduced to 60% width and centered */
+.home-hero .hero-img {
+  width: 60%;
+  margin: 0 auto;
 }
 
 /* Page title section below hero */
