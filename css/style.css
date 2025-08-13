@@ -108,6 +108,8 @@ h1, h2 {
 .page-title {
   text-align: center;
   padding: 16px 12px 8px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .page-title h1 {
@@ -699,15 +701,17 @@ summary::-webkit-details-marker {
 
 /* Recipe list */
 .recipe-list {
-  margin-bottom: 50px;
+  max-width: 600px;
+  margin: 0 auto 50px;
 }
 
 .recipe-item {
   background-color: var(--color-white);
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   border-radius: 6px;
   box-shadow: 0 1px 3px var(--card-shadow);
   overflow: hidden;
+  max-width: 600px;
 }
 
 .recipe-item summary {
@@ -724,6 +728,8 @@ summary::-webkit-details-marker {
 
 .ingredients-list {
   padding: 10px 20px 20px 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .category-tag {
