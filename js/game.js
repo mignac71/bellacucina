@@ -78,7 +78,7 @@ window.initGamePage = function () {
   initGameData();
   renderPlayerOptions();
   // Game buttons
-  document.querySelectorAll('.game-btn').forEach((btn) => {
+  document.querySelectorAll('.game-card').forEach((btn) => {
     btn.addEventListener('click', () => {
       updateCurrentPlayer();
       const game = btn.getAttribute('data-game');
