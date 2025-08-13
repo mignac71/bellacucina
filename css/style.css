@@ -333,6 +333,30 @@ summary::-webkit-details-marker {
   cursor: pointer;
 }
 
+.player-select .add-player {
+  margin-top: 10px;
+}
+
+.player-select input[type='text'] {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.player-select button {
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.player-select button:hover {
+  background-color: #007735;
+}
+
 .game-select {
   display: flex;
   gap: 15px;

@@ -2,7 +2,7 @@
 
 let recipesData = [];
 let ingredientsPairs = [];
-let currentPlayer = 'Kasia';
+let currentPlayer = null;
 
 // Utility: shuffle array
 function shuffle(arr) {
@@ -32,6 +32,7 @@ function initGameData() {
 
 // Scoreboard helper: add points to current player
 function addPoints(points) {
+  if (!currentPlayer) return;
   const scores = loadScores();
   scores[currentPlayer] = (scores[currentPlayer] || 0) + points;
   saveScores(scores);
@@ -41,7 +42,33 @@ function addPoints(points) {
 // Set current player from radio input
 function updateCurrentPlayer() {
   const selected = document.querySelector('input[name="current-player"]:checked');
-  currentPlayer = selected ? selected.value : 'Kasia';
+  if (selected) {
+    currentPlayer = selected.value;
+  }
+}
+
+// Render player selection options
+function renderPlayerOptions() {
+  const container = document.getElementById('player-options');
+  if (!container) return;
+  const scores = loadScores();
+  const players = Object.keys(scores);
+  container.innerHTML = '';
+  players.forEach((player, idx) => {
+    const label = document.createElement('label');
+    const radio = document.createElement('input');
+    radio.type = 'radio';
+    radio.name = 'current-player';
+    radio.value = player;
+    if ((currentPlayer === null && idx === 0) || currentPlayer === player) {
+      radio.checked = true;
+      currentPlayer = player;
+    }
+    radio.addEventListener('change', updateCurrentPlayer);
+    label.appendChild(radio);
+    label.appendChild(document.createTextNode(player));
+    container.appendChild(label);
+  });
 }
 
 // Initialize game page after recipe data has been loaded via fetch.
@@ -49,6 +76,7 @@ function updateCurrentPlayer() {
 window.initGamePage = function () {
   renderScoreboard();
   initGameData();
+  renderPlayerOptions();
   // Game buttons
   document.querySelectorAll('.game-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -63,10 +91,20 @@ window.initGamePage = function () {
       }
     });
   });
-  // listen for player change
-  document.querySelectorAll('input[name="current-player"]').forEach((radio) => {
-    radio.addEventListener('change', updateCurrentPlayer);
-  });
+
+  const addBtn = document.getElementById('add-player-btn');
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      const input = document.getElementById('new-player-name');
+      const name = input.value.trim();
+      if (name) {
+        addPlayer(name);
+        currentPlayer = name;
+        renderPlayerOptions();
+        input.value = '';
+      }
+    });
+  }
 };
 
 // MEMORY GAME

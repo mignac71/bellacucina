@@ -1,7 +1,7 @@
 // Global scoreboard management for Bella Cucina
 
 // Prosta pamięć rezerwowa, gdy localStorage jest niedostępne
-let memoryScores = { Kasia: 0, Michał: 0 };
+let memoryScores = {};
 let storageAvailable = true;
 
 // Load scores from localStorage or initialize default
@@ -11,23 +11,18 @@ function loadScores() {
       const stored = localStorage.getItem('bellaScores');
       if (stored) {
         try {
-          const parsed = JSON.parse(stored);
-          // ensure both players exist
-          memoryScores = {
-            Kasia: parsed.Kasia ?? 0,
-            Michał: parsed['Michał'] ?? 0,
-          };
+          memoryScores = JSON.parse(stored) || {};
         } catch (e) {
           console.error('Błąd odczytu punktów:', e);
-          memoryScores = { Kasia: 0, Michał: 0 };
+          memoryScores = {};
         }
       } else {
-        memoryScores = { Kasia: 0, Michał: 0 };
+        memoryScores = {};
       }
     } catch (e) {
       console.error('localStorage niedostępne, używam wartości domyślnych:', e);
       storageAvailable = false;
-      memoryScores = { Kasia: 0, Michał: 0 };
+      memoryScores = {};
     }
   }
   return memoryScores;
@@ -54,7 +49,7 @@ function renderScoreboard() {
   // Clear current contents
   scoreboardEl.innerHTML = '';
   // Create player elements
-  ['Kasia', 'Michał'].forEach((player) => {
+  Object.keys(scores).forEach((player) => {
     const playerDiv = document.createElement('div');
     playerDiv.className = 'player';
     const nameEl = document.createElement('h3');
@@ -70,9 +65,20 @@ function renderScoreboard() {
 
 // Reset scores to zero
 function resetScores() {
-  const scores = { Kasia: 0, Michał: 0 };
+  const scores = loadScores();
+  Object.keys(scores).forEach((p) => (scores[p] = 0));
   saveScores(scores);
   renderScoreboard();
+}
+
+// Add a new player with zero points
+function addPlayer(name) {
+  const scores = loadScores();
+  if (!scores[name]) {
+    scores[name] = 0;
+    saveScores(scores);
+    renderScoreboard();
+  }
 }
 
 // Initialize scoreboard and buttons when DOM is ready

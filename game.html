@@ -28,14 +28,11 @@
       </div>
       <section class="game-controls">
         <div class="player-select">
-          <label>
-            <input type="radio" name="current-player" value="Kasia" checked />
-            Kasia
-          </label>
-          <label>
-            <input type="radio" name="current-player" value="Michał" />
-            Michał
-          </label>
+          <div id="player-options"></div>
+          <div class="add-player">
+            <input type="text" id="new-player-name" placeholder="Twój nick" />
+            <button id="add-player-btn">Dołącz</button>
+          </div>
         </div>
         <div class="game-select">
           <button class="game-btn" data-game="memory">Gra pamięciowa</button>
