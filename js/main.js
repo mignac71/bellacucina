@@ -107,4 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  const resetPlayersBtn = document.getElementById('reset-players');
+  if (resetPlayersBtn) {
+    resetPlayersBtn.addEventListener('click', () => {
+      if (confirm('Czy na pewno chcesz skasować rejestr graczy?')) {
+        resetPlayers();
+      }
+    });
+  }
 });
