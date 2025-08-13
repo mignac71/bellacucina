@@ -214,6 +214,22 @@ h1, h2 {
   background-color: #b71d2b;
 }
 
+/* Generic button used in games (e.g., exit to menu) */
+.submit-btn {
+  margin-top: 15px;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #007735;
+}
+
 footer {
   text-align: center;
   padding: 20px;
