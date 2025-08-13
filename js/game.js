@@ -5,6 +5,105 @@ let ingredientsPairs = [];
 let currentPlayer = null;
 const PLAYER_KEY = 'bellaCurrentPlayer';
 
+// --- Speech synthesis helpers for Italian pronunciation ---
+let ITALIAN_VOICE = null;
+
+function bestItalianVoice(voices) {
+  const preferNames = ['Siri', 'Enhanced', 'Federica', 'Alice', 'Luca', 'Silvia', 'Paolo'];
+  const itVoices = voices.filter((v) => (v.lang || '').toLowerCase().startsWith('it'));
+  if (!itVoices.length) return null;
+  itVoices.sort((a, b) => {
+    const aIndex = preferNames.findIndex((name) => (a.name || '').includes(name));
+    const bIndex = preferNames.findIndex((name) => (b.name || '').includes(name));
+    return (aIndex === -1 ? 999 : aIndex) - (bIndex === -1 ? 999 : bIndex);
+  });
+  return itVoices[0];
+}
+
+function loadItalianVoice(callback) {
+  if (!('speechSynthesis' in window)) {
+    callback(null);
+    return;
+  }
+  const synth = window.speechSynthesis;
+  const selectVoice = () => {
+    const voices = synth.getVoices();
+    if (!voices || !voices.length) {
+      callback(null);
+      return;
+    }
+    let savedName = null;
+    try {
+      savedName = localStorage.getItem('bella_it_voice');
+    } catch (e) {
+      console.warn('localStorage unavailable, cannot load voice preference:', e);
+    }
+    let chosen = null;
+    if (savedName) {
+      chosen = voices.find((v) => v.name === savedName);
+    }
+    if (!chosen) {
+      chosen = bestItalianVoice(voices);
+    }
+    ITALIAN_VOICE = chosen;
+    if (chosen) {
+      try {
+        localStorage.setItem('bella_it_voice', chosen.name);
+      } catch (e) {
+        console.warn('localStorage unavailable, cannot save voice preference:', e);
+      }
+    }
+    callback(chosen);
+  };
+  if (synth.getVoices().length) {
+    selectVoice();
+  } else {
+    synth.onvoiceschanged = selectVoice;
+  }
+}
+
+function pronounceItalian(word) {
+  if (!('speechSynthesis' in window)) {
+    alert('Twoja przeglądarka nie obsługuje syntezy mowy.');
+    return;
+  }
+  const synth = window.speechSynthesis;
+  const speakNow = () => {
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'it-IT';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.0;
+    if (ITALIAN_VOICE) {
+      utterance.voice = ITALIAN_VOICE;
+    }
+    synth.cancel();
+    setTimeout(() => synth.speak(utterance), 50);
+  };
+  if (!ITALIAN_VOICE) {
+    loadItalianVoice(() => speakNow());
+  } else {
+    speakNow();
+  }
+}
+
+function createItalianWordElement(word) {
+  const span = document.createElement('span');
+  span.className = 'it-word';
+  span.append(document.createTextNode(word));
+  const icon = document.createElement('i');
+  icon.className = 'fa-solid fa-volume-high speak-icon';
+  icon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    pronounceItalian(word);
+  });
+  span.appendChild(icon);
+  return span;
+}
+
+function isItalianWord(word) {
+  return ingredientsPairs.some((p) => p.it === word);
+}
+
 // Utility: shuffle array
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -192,8 +291,8 @@ function startMemoryGame() {
   const pairs = shuffle([...ingredientsPairs]).slice(0, numPairs);
   const deck = [];
   pairs.forEach((pair) => {
-    deck.push({ id: pair.it + '_it', text: pair.it, match: pair.pl });
-    deck.push({ id: pair.pl + '_pl', text: pair.pl, match: pair.it });
+    deck.push({ id: pair.it + '_it', text: pair.it, match: pair.pl, lang: 'it' });
+    deck.push({ id: pair.pl + '_pl', text: pair.pl, match: pair.it, lang: 'pl' });
   });
   shuffle(deck);
   // Create grid container
@@ -215,6 +314,7 @@ function startMemoryGame() {
     card.dataset.text = cardData.text;
     card.dataset.match = cardData.match;
     card.dataset.revealed = 'false';
+    card.dataset.lang = cardData.lang;
     card.addEventListener('click', () => {
       if (lockBoard || card.dataset.revealed === 'true') return;
       revealCard(card);
@@ -232,8 +332,13 @@ function startMemoryGame() {
 
   function revealCard(card) {
     card.classList.add('revealed');
-    card.textContent = card.dataset.text;
     card.dataset.revealed = 'true';
+    if (card.dataset.lang === 'it') {
+      card.innerHTML = '';
+      card.appendChild(createItalianWordElement(card.dataset.text));
+    } else {
+      card.textContent = card.dataset.text;
+    }
   }
 
   function hideCard(card) {
@@ -319,18 +424,20 @@ function newIngredientRound(container) {
   wrapper.className = 'ingredient-game';
   const question = document.createElement('div');
   question.className = 'question';
-  question.textContent = `Które składniki należą do przepisu: ${recipe.italian_name} / ${recipe.polish_name}?`;
+  question.textContent = 'Które składniki należą do przepisu: ';
+  question.appendChild(createItalianWordElement(recipe.italian_name));
+  question.appendChild(document.createTextNode(` / ${recipe.polish_name}?`));
   wrapper.appendChild(question);
   const optsDiv = document.createElement('div');
   optsDiv.className = 'options';
   options.forEach((opt) => {
     const btn = document.createElement('div');
     btn.className = 'option';
-    btn.textContent = opt.text;
     btn.dataset.correct = opt.correct ? 'true' : 'false';
     btn.dataset.selected = 'false';
+    const content = createItalianWordElement(opt.text);
+    btn.appendChild(content);
     btn.addEventListener('click', () => {
-      // Toggle selection state
       if (btn.dataset.selected === 'true') {
         btn.dataset.selected = 'false';
         btn.classList.remove('selected');
@@ -338,10 +445,6 @@ function newIngredientRound(container) {
         btn.dataset.selected = 'true';
         btn.classList.add('selected');
       }
-      // Pronounce the Italian word when clicked. The option text is always
-      // an Italian ingredient name. Stop propagation to avoid unwanted
-      // event bubbling.
-      pronounceItalian(opt.text);
     });
     optsDiv.appendChild(btn);
   });
@@ -453,7 +556,11 @@ function newTranslationRound(container) {
 
   const wordBox = document.createElement('div');
   wordBox.className = 'word-box';
-  wordBox.textContent = questionWord;
+  if (direction === 'it2pl') {
+    wordBox.appendChild(createItalianWordElement(questionWord));
+  } else {
+    wordBox.textContent = questionWord;
+  }
   wrapper.appendChild(wordBox);
 
   const answersDiv = document.createElement('div');
@@ -461,10 +568,12 @@ function newTranslationRound(container) {
   answers.forEach((ans) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.textContent = ans;
+    if (direction === 'pl2it') {
+      btn.appendChild(createItalianWordElement(ans));
+    } else {
+      btn.textContent = ans;
+    }
     btn.addEventListener('click', () => {
-      // Evaluate answer without triggering speech. Pronunciation of
-      // Italian words is disabled in the translation game per user request.
       evaluateTranslationAnswer(btn, ans, correctAnswer, wrapper);
     });
     answersDiv.appendChild(btn);
@@ -474,9 +583,7 @@ function newTranslationRound(container) {
   container.appendChild(wrapper);
   addExitButton(container);
 
-  // We intentionally do not attach pronunciation to the Italian word
-  // in the question for the translation game to prevent interfering with
-  // answer selection and to simplify the user experience.
+  // Speaker icons are added to Italian words; clicking them pronounces the word.
 }
 
 function evaluateTranslationAnswer(btn, chosen, correct, wrapper) {
@@ -498,7 +605,16 @@ function evaluateTranslationAnswer(btn, chosen, correct, wrapper) {
   const result = document.createElement('p');
   result.style.textAlign = 'center';
   result.style.marginTop = '10px';
-  result.textContent = points > 0 ? 'Poprawna odpowiedź! +1 punkt' : `Błędna odpowiedź. Prawidłowo: ${correct}`;
+  if (points > 0) {
+    result.textContent = 'Poprawna odpowiedź! +1 punkt';
+  } else {
+    result.textContent = 'Błędna odpowiedź. Prawidłowo: ';
+    if (isItalianWord(correct)) {
+      result.appendChild(createItalianWordElement(correct));
+    } else {
+      result.appendChild(document.createTextNode(correct));
+    }
+  }
   wrapper.appendChild(result);
   const nextBtn = document.createElement('button');
   nextBtn.className = 'submit-btn';
