@@ -176,16 +176,11 @@ h1, h2 {
   color: inherit;
 }
 
-.card .icon {
-  font-size: 2.5rem;
+.card-img {
+  width: 100%;
+  height: auto;
   margin-bottom: 10px;
-  color: var(--color-red);
-}
-
-.card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 8px;
-  color: var(--color-green);
+  border-radius: 6px;
 }
 
 .card p {
@@ -471,6 +466,18 @@ summary::-webkit-details-marker {
   text-align: center;
 }
 
+.ingredient-game .dish-title-it {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 10px 0 4px;
+}
+
+.ingredient-game .dish-title-pl {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
 .ingredient-game .options {
   display: flex;
   flex-wrap: wrap;
@@ -502,6 +509,13 @@ summary::-webkit-details-marker {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
+}
+
+.ingredient-game .check-btn {
+  display: block;
+  margin: 20px auto 0;
+  font-size: 1.2rem;
+  padding: 12px 24px;
 }
 
 .ingredient-game .submit-btn:hover {

@@ -424,10 +424,16 @@ function newIngredientRound(container) {
   wrapper.className = 'ingredient-game';
   const question = document.createElement('div');
   question.className = 'question';
-  question.textContent = 'Które składniki należą do przepisu: ';
-  question.appendChild(createItalianWordElement(recipe.italian_name));
-  question.appendChild(document.createTextNode(` / ${recipe.polish_name}?`));
+  question.textContent = 'Wybierz składniki do przepisu:';
   wrapper.appendChild(question);
+  const titleIt = document.createElement('div');
+  titleIt.className = 'dish-title-it';
+  titleIt.textContent = recipe.italian_name;
+  wrapper.appendChild(titleIt);
+  const titlePl = document.createElement('div');
+  titlePl.className = 'dish-title-pl';
+  titlePl.textContent = recipe.polish_name;
+  wrapper.appendChild(titlePl);
   const optsDiv = document.createElement('div');
   optsDiv.className = 'options';
   options.forEach((opt) => {
@@ -450,10 +456,10 @@ function newIngredientRound(container) {
   });
   wrapper.appendChild(optsDiv);
   const submit = document.createElement('button');
-  submit.className = 'submit-btn';
+  submit.className = 'submit-btn check-btn';
   submit.textContent = 'Sprawdź';
   submit.addEventListener('click', () => {
-    evaluateIngredientRound(wrapper, options);
+    evaluateIngredientRound(wrapper, options, recipe);
   });
   wrapper.appendChild(submit);
   container.innerHTML = '';
@@ -461,7 +467,8 @@ function newIngredientRound(container) {
   addExitButton(container);
 }
 
-function evaluateIngredientRound(wrapper, options) {
+function evaluateIngredientRound(wrapper, options, recipe) {
+  pronounceItalian(recipe.italian_name);
   let pointsThisRound = 0;
   const optionEls = wrapper.querySelectorAll('.option');
   optionEls.forEach((el) => {
