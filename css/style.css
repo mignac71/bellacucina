@@ -742,16 +742,18 @@ summary::-webkit-details-marker {
   margin-bottom: 6px;
 }
 
-/* Recipe photo displayed beneath the ingredients list.  We set a
-   responsive width so the image scales with the container. A border
-   radius softens the corners and a subtle box shadow helps it stand
-   out against the white card. */
+/* Recipe photo displayed at the top of the expanded recipe, right below
+   the title. The image scales with the container but never exceeds
+   600px in width. A border radius softens the corners and a subtle box
+   shadow helps it stand out against the white card. */
 .recipe-photo {
   width: 100%;
+  max-width: 600px;
   height: auto;
   border-radius: 6px;
-  margin-top: 15px;
+  margin: 15px auto;
   box-shadow: 0 2px 4px var(--card-shadow);
+  display: block;
 }
 
 /* Source attribution shown under each recipe photo. Use a small
