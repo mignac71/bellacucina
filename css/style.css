@@ -192,6 +192,12 @@ h1, h2 {
   font-size: 0.95rem;
   color: var(--text-dark);
 }
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
 
 /* Reset button */
 .reset {
@@ -494,19 +500,31 @@ summary::-webkit-details-marker {
 }
 
 .ingredient-game .submit-btn {
-  margin-top: 15px;
+  margin: 20px auto;
+  display: block;
   background-color: var(--color-green);
   color: var(--color-white);
   border: none;
-  padding: 8px 16px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
 .ingredient-game .submit-btn:hover {
   background-color: #007735;
 }
+.ingredient-game .recipe-title-it {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+.ingredient-game .recipe-title-pl {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
 
 /* Translation game */
 .translation-game {
