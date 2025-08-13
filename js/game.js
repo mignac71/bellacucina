@@ -71,6 +71,44 @@ function renderPlayerOptions() {
   });
 }
 
+// Show/hide game menu for mobile-friendly gameplay
+function hideGameMenu() {
+  const controls = document.querySelector('.game-controls');
+  const scoreboard = document.getElementById('scoreboard');
+  const backLink = document.querySelector('.back-link');
+  const hero = document.querySelector('.hero');
+  const pageTitle = document.querySelector('.page-title');
+  if (controls) controls.style.display = 'none';
+  if (scoreboard) scoreboard.style.display = 'none';
+  if (backLink) backLink.style.display = 'none';
+  if (hero) hero.style.display = 'none';
+  if (pageTitle) pageTitle.style.display = 'none';
+}
+
+function showGameMenu() {
+  const controls = document.querySelector('.game-controls');
+  const scoreboard = document.getElementById('scoreboard');
+  const backLink = document.querySelector('.back-link');
+  const hero = document.querySelector('.hero');
+  const pageTitle = document.querySelector('.page-title');
+  if (controls) controls.style.display = '';
+  if (scoreboard) scoreboard.style.display = '';
+  if (backLink) backLink.style.display = '';
+  if (hero) hero.style.display = '';
+  if (pageTitle) pageTitle.style.display = '';
+  const container = document.getElementById('game-container');
+  if (container) container.innerHTML = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function addExitButton(container) {
+  const exitBtn = document.createElement('button');
+  exitBtn.className = 'submit-btn';
+  exitBtn.textContent = 'Powrót do menu';
+  exitBtn.addEventListener('click', showGameMenu);
+  container.appendChild(exitBtn);
+}
+
 // Initialize game page after recipe data has been loaded via fetch.
 // Called from game.html once `window.recipesData` is available.
 window.initGamePage = function () {
@@ -81,6 +119,7 @@ window.initGamePage = function () {
   document.querySelectorAll('.game-card').forEach((btn) => {
     btn.addEventListener('click', () => {
       updateCurrentPlayer();
+      hideGameMenu();
       const game = btn.getAttribute('data-game');
       if (game === 'memory') {
         startMemoryGame();
@@ -156,6 +195,8 @@ function startMemoryGame() {
     grid.appendChild(card);
   });
 
+  addExitButton(container);
+
   function revealCard(card) {
     card.classList.add('revealed');
     card.textContent = card.dataset.text;
@@ -192,7 +233,7 @@ function startMemoryGame() {
         if (matchedCount === numPairs) {
           setTimeout(() => {
             alert('Brawo! Ukończyłeś grę.');
-            startMemoryGame();
+            showGameMenu();
           }, 200);
         }
       }, 300);
@@ -281,6 +322,7 @@ function newIngredientRound(container) {
   wrapper.appendChild(submit);
   container.innerHTML = '';
   container.appendChild(wrapper);
+  addExitButton(container);
 }
 
 function evaluateIngredientRound(wrapper, options) {
@@ -383,6 +425,7 @@ function newTranslationRound(container) {
   wrapper.appendChild(answersDiv);
   container.innerHTML = '';
   container.appendChild(wrapper);
+  addExitButton(container);
 
   // We intentionally do not attach pronunciation to the Italian word
   // in the question for the translation game to prevent interfering with
