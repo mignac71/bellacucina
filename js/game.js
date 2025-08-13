@@ -3,6 +3,7 @@
 let recipesData = [];
 let ingredientsPairs = [];
 let currentPlayer = null;
+const PLAYER_KEY = 'bellaCurrentPlayer';
 
 // Utility: shuffle array
 function shuffle(arr) {
@@ -44,6 +45,11 @@ function updateCurrentPlayer() {
   const selected = document.querySelector('input[name="current-player"]:checked');
   if (selected) {
     currentPlayer = selected.value;
+    try {
+      localStorage.setItem(PLAYER_KEY, currentPlayer);
+    } catch (e) {
+      console.error('Nie można zapisać bieżącego gracza:', e);
+    }
   }
 }
 
@@ -112,8 +118,30 @@ function addExitButton(container) {
 // Initialize game page after recipe data has been loaded via fetch.
 // Called from game.html once `window.recipesData` is available.
 window.initGamePage = function () {
-  renderScoreboard();
   initGameData();
+  let storedPlayer = null;
+  try {
+    storedPlayer = localStorage.getItem(PLAYER_KEY);
+  } catch (e) {
+    console.error('localStorage niedostępne:', e);
+  }
+  const scores = loadScores();
+  if (!storedPlayer) {
+    do {
+      storedPlayer = prompt('Podaj swój nick:');
+      if (storedPlayer) storedPlayer = storedPlayer.trim();
+    } while (!storedPlayer);
+    addPlayer(storedPlayer);
+    try {
+      localStorage.setItem(PLAYER_KEY, storedPlayer);
+    } catch (e) {
+      console.error('Nie można zapisać gracza:', e);
+    }
+  } else if (!scores[storedPlayer]) {
+    addPlayer(storedPlayer);
+  }
+  currentPlayer = storedPlayer;
+  renderScoreboard();
   renderPlayerOptions();
   // Game buttons
   document.querySelectorAll('.game-card').forEach((btn) => {
@@ -139,6 +167,11 @@ window.initGamePage = function () {
       if (name) {
         addPlayer(name);
         currentPlayer = name;
+        try {
+          localStorage.setItem(PLAYER_KEY, name);
+        } catch (e) {
+          console.error('Nie można zapisać gracza:', e);
+        }
         renderPlayerOptions();
         input.value = '';
       }
