@@ -213,6 +213,24 @@ function displayRecipes() {
 
       const contentDiv = document.createElement('div');
       contentDiv.className = 'ingredients-list';
+
+      // If the recipe has a photo defined, display it at the top right below the title.
+      // We also show a small attribution line referencing the source of the image.
+      if (recipe.image) {
+        const imgEl = document.createElement('img');
+        imgEl.src = recipe.image;
+        imgEl.alt = recipe.italian_name;
+        imgEl.className = 'recipe-photo';
+        contentDiv.appendChild(imgEl);
+        // Add source line if provided
+        if (recipe.source) {
+          const sourceEl = document.createElement('div');
+          sourceEl.className = 'image-source';
+          sourceEl.textContent = recipe.source;
+          contentDiv.appendChild(sourceEl);
+        }
+      }
+
       const list = document.createElement('ul');
       recipe.ingredients.forEach((ing) => {
         const li = document.createElement('li');
@@ -270,22 +288,6 @@ function displayRecipes() {
         contentDiv.appendChild(descDiv);
       }
 
-      // If the recipe has a photo defined, display it under the description.
-      // We also show a small attribution line referencing the source of the image.
-      if (recipe.image) {
-        const imgEl = document.createElement('img');
-        imgEl.src = recipe.image;
-        imgEl.alt = recipe.italian_name;
-        imgEl.className = 'recipe-photo';
-        contentDiv.appendChild(imgEl);
-        // Add source line if provided
-        if (recipe.source) {
-          const sourceEl = document.createElement('div');
-          sourceEl.className = 'image-source';
-          sourceEl.textContent = recipe.source;
-          contentDiv.appendChild(sourceEl);
-        }
-      }
       detailsEl.appendChild(contentDiv);
 
       // Add toggle event to pronounce the recipe title when opened
