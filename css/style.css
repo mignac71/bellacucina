@@ -20,12 +20,37 @@ body {
   background-color: var(--color-beige);
   color: var(--text-dark);
   line-height: 1.6;
+  padding-top: 60px;
 }
 
 h1, h2 {
   font-family: 'Georgia', serif;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-beige);
+  box-shadow: 0 2px 5px var(--card-shadow);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.top-nav a:hover {
+  color: var(--color-red);
 }
 
 /* Hero section now contains only an image. Image scales with viewport */
@@ -406,9 +431,8 @@ summary::-webkit-details-marker {
   background-color: var(--color-white);
   border-radius: 10px;
   box-shadow: 0 2px 5px var(--card-shadow);
-  padding: 20px;
   width: 200px;
-  text-align: center;
+  overflow: hidden;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -418,15 +442,10 @@ summary::-webkit-details-marker {
   box-shadow: 0 4px 10px var(--card-shadow);
 }
 
-.game-card .icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: var(--color-red);
-}
-
-.game-card h3 {
-  font-size: 1.2rem;
-  color: var(--color-green);
+.game-card img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Memory game grid */
