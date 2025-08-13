@@ -495,6 +495,18 @@ summary::-webkit-details-marker {
 /* Translation game */
 .translation-game {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.translation-game .flags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .translation-game .question {
@@ -503,11 +515,22 @@ summary::-webkit-details-marker {
   text-align: center;
 }
 
+.translation-game .word-box {
+  border: 1px solid var(--color-green);
+  background-color: #f0f0f0;
+  color: var(--color-green);
+  font-size: 1.35rem;
+  padding: 16px 26px;
+  text-align: center;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
 .translation-game .answers {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
-  justify-content: center;
+  align-items: center;
 }
 
 .translation-game .answer-btn {
@@ -554,6 +577,20 @@ summary::-webkit-details-marker {
 }
 .translation-game .submit-btn:hover {
   background-color: #007735;
+}
+
+.exit-btn {
+  margin-top: 20px;
+  background-color: #cccccc;
+  color: #333333;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.35rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Subpage controls */
