@@ -103,7 +103,7 @@ function showGameMenu() {
 
 function addExitButton(container) {
   const exitBtn = document.createElement('button');
-  exitBtn.className = 'submit-btn';
+  exitBtn.className = 'exit-btn';
   exitBtn.textContent = 'Powrót do menu';
   exitBtn.addEventListener('click', showGameMenu);
   container.appendChild(exitBtn);
@@ -377,15 +377,16 @@ function newTranslationRound(container) {
   const pair = ingredientsPairs[Math.floor(Math.random() * ingredientsPairs.length)];
   // Decide direction: 50% Italian->Polish, 50% Polish->Italian
   const direction = Math.random() < 0.5 ? 'it2pl' : 'pl2it';
-  let questionText, correctAnswer;
+  let questionWord, instructionText, correctAnswer;
   if (direction === 'it2pl') {
-    // For Italian→Polish, ask to translate the Italian word. We do not wrap
-    // the word in a clickable span anymore to avoid interfering with game flow.
-    questionText = `Jak przetłumaczyć na polski: ${pair.it}?`;
+    // Italian → Polish
+    questionWord = pair.it;
+    instructionText = 'Przetłumacz na polski:';
     correctAnswer = pair.pl;
   } else {
-    // For Polish→Italian, ask to translate the Polish word.
-    questionText = `Jak przetłumaczyć na włoski: ${pair.pl}?`;
+    // Polish → Italian
+    questionWord = pair.pl;
+    instructionText = 'Przetłumacz na włoski:';
     correctAnswer = pair.it;
   }
   // Build answers: include correct answer and three random wrong answers
@@ -402,13 +403,26 @@ function newTranslationRound(container) {
   // Build UI
   const wrapper = document.createElement('div');
   wrapper.className = 'translation-game';
+
+  const flagsDiv = document.createElement('div');
+  flagsDiv.className = 'flags';
+  if (direction === 'it2pl') {
+    flagsDiv.innerHTML = '<span class="flag">🇮🇹</span><span class="arrow">→</span><span class="flag">🇵🇱</span>';
+  } else {
+    flagsDiv.innerHTML = '<span class="flag">🇵🇱</span><span class="arrow">→</span><span class="flag">🇮🇹</span>';
+  }
+  wrapper.appendChild(flagsDiv);
+
   const questionEl = document.createElement('div');
   questionEl.className = 'question';
-  // Use innerHTML because questionText may contain HTML (span)
-  // Use textContent because questionText no longer contains HTML. If
-  // you want to emphasize the word visually, you can style it via CSS.
-  questionEl.textContent = questionText;
+  questionEl.textContent = instructionText;
   wrapper.appendChild(questionEl);
+
+  const wordBox = document.createElement('div');
+  wordBox.className = 'word-box';
+  wordBox.textContent = questionWord;
+  wrapper.appendChild(wordBox);
+
   const answersDiv = document.createElement('div');
   answersDiv.className = 'answers';
   answers.forEach((ans) => {
