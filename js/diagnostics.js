@@ -12,6 +12,11 @@
   let onlyErrors = false;
   let lastRows = []; // pamiętamy wyniki do eksportu
 
+  // Clear all registered players when diagnostics loads
+  if (typeof window.resetPlayers === 'function') {
+    window.resetPlayers();
+  }
+
   function sanitizeIssues(path) {
     if (!path) return [];
     const issues = [];
