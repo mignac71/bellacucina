@@ -71,6 +71,21 @@ function resetScores() {
   renderScoreboard();
 }
 
+// Completely remove all players from the registry
+function resetPlayers() {
+  memoryScores = {};
+  if (storageAvailable) {
+    try {
+      localStorage.removeItem('bellaScores');
+      localStorage.removeItem('bellaCurrentPlayer');
+    } catch (e) {
+      console.error('Błąd kasowania graczy z localStorage:', e);
+      storageAvailable = false;
+    }
+  }
+  renderScoreboard();
+}
+
 // Add a new player with zero points
 function addPlayer(name) {
   const scores = loadScores();
@@ -89,6 +104,15 @@ document.addEventListener('DOMContentLoaded', () => {
     resetBtn.addEventListener('click', () => {
       if (confirm('Czy na pewno chcesz zresetować punkty?')) {
         resetScores();
+      }
+    });
+  }
+
+  const resetPlayersBtn = document.getElementById('reset-players');
+  if (resetPlayersBtn) {
+    resetPlayersBtn.addEventListener('click', () => {
+      if (confirm('Czy na pewno chcesz skasować rejestr graczy?')) {
+        resetPlayers();
       }
     });
   }
