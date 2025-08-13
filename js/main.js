@@ -107,4 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Hide fallback "Home" text if the Font Awesome home icon loads
+  if (document.fonts && document.fonts.check('1em "Font Awesome 6 Free"')) {
+    document.querySelectorAll('.home-link .home-text').forEach((el) => {
+      el.style.display = 'none';
+    });
+  }
 });
