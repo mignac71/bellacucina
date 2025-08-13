@@ -364,19 +364,31 @@ summary::-webkit-details-marker {
   justify-content: center;
 }
 
-.game-btn {
-  background-color: var(--color-green);
-  color: var(--color-white);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+.game-card {
+  background-color: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px var(--card-shadow);
+  padding: 20px;
+  width: 200px;
+  text-align: center;
   cursor: pointer;
-  font-size: 0.95rem;
-  transition: background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.game-btn:hover {
-  background-color: #007735;
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px var(--card-shadow);
+}
+
+.game-card .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: var(--color-red);
+}
+
+.game-card h3 {
+  font-size: 1.2rem;
+  color: var(--color-green);
 }
 
 /* Memory game grid */
