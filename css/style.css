@@ -690,6 +690,19 @@ summary::-webkit-details-marker {
   color: var(--color-white);
 }
 
+.restaurant-game .translation {
+  display: block;
+  font-size: 0.9rem;
+  color: #555555;
+  margin-top: 4px;
+}
+
+.restaurant-summary li .translation {
+  font-size: 0.9rem;
+  color: #555555;
+  margin-left: 6px;
+}
+
 .restaurant-summary ul {
   list-style: none;
   padding: 0;

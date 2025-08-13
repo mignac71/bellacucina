@@ -635,55 +635,217 @@ function evaluateTranslationAnswer(btn, chosen, correct, wrapper) {
 }
 
 // --- Restaurant role-play game ---
-const restaurantDialogues = [
+const restaurantDialoguesPool = [
   {
     question: 'Buongiorno! Desidera ordinare qualcosa da bere?',
+    question_pl: 'Dzień dobry! Czy chce Pan/Pani zamówić coś do picia?',
     answers: [
-      "Sì, un bicchiere d'acqua, per favore.",
-      "Dov'è il bagno?",
-      'No, il conto per favore.',
+      { text: "Sì, un bicchiere d'acqua, per favore.", translation: 'Tak, poproszę szklankę wody.' },
+      { text: "Dov'è il bagno?", translation: 'Gdzie jest łazienka?' },
+      { text: 'No, il conto per favore.', translation: 'Nie, poproszę rachunek.' },
     ],
     correct: 0,
-    translation: 'Tak, poproszę szklankę wody.',
   },
   {
     question: 'È pronto per ordinare?',
+    question_pl: 'Czy jest Pan/Pani gotowy złożyć zamówienie?',
     answers: [
-      'Sì, vorrei la lasagna.',
-      'No, solo il conto.',
-      'A che ora chiudete?',
+      { text: 'Sì, vorrei la lasagna.', translation: 'Tak, poproszę lasagne.' },
+      { text: 'No, solo il conto.', translation: 'Nie, tylko rachunek.' },
+      { text: 'A che ora chiudete?', translation: 'O której zamykacie?' },
     ],
     correct: 0,
-    translation: 'Tak, poproszę lasagne.',
   },
   {
     question: 'Tutto bene con il pasto?',
+    question_pl: 'Czy wszystko w porządku z posiłkiem?',
     answers: [
-      'Sì, è delizioso, grazie!',
-      'Vorrei un taxi.',
-      'Dove posso pagare?',
+      { text: 'Sì, è delizioso, grazie!', translation: 'Tak, jest pyszne, dziękuję!' },
+      { text: 'Vorrei un taxi.', translation: 'Chciałbym taksówkę.' },
+      { text: 'Dove posso pagare?', translation: 'Gdzie mogę zapłacić?' },
     ],
     correct: 0,
-    translation: 'Tak, jest pyszne, dziękuję!',
   },
   {
     question: 'Le porto il conto?',
+    question_pl: 'Czy przynieść rachunek?',
     answers: [
-      'Sì, il conto per favore.',
-      'Un altro dolce, per favore.',
-      "Una bottiglia d'olio, grazie.",
+      { text: 'Sì, il conto per favore.', translation: 'Tak, poproszę rachunek.' },
+      { text: 'Un altro dolce, per favore.', translation: 'Jeszcze jeden deser, proszę.' },
+      { text: "Una bottiglia d'olio, grazie.", translation: 'Butelkę oliwy, dziękuję.' },
     ],
     correct: 0,
-    translation: 'Tak, poproszę rachunek.',
+  },
+  {
+    question: 'Gradirebbe vedere il menu dei dolci?',
+    question_pl: 'Czy chciałby/chciałaby Pan/Pani zobaczyć menu deserów?',
+    answers: [
+      { text: 'Sì, per favore.', translation: 'Tak, poproszę.' },
+      { text: 'No, sono sazio.', translation: 'Nie, jestem syty.' },
+      { text: 'Quanto costa il pane?', translation: 'Ile kosztuje chleb?' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Avete una prenotazione?',
+    question_pl: 'Czy mają Państwo rezerwację?',
+    answers: [
+      { text: 'Sì, a nome Rossi.', translation: 'Tak, na nazwisko Rossi.' },
+      { text: 'No, un tavolo per due, per favore.', translation: 'Nie, stolik dla dwóch, proszę.' },
+      { text: 'Sì, per domani.', translation: 'Tak, na jutro.' },
+    ],
+    correct: 1,
+  },
+  {
+    question: 'Come desidera la bistecca?',
+    question_pl: 'Jak ma być wysmażony stek?',
+    answers: [
+      { text: 'Media, per favore.', translation: 'Średnio, proszę.' },
+      { text: 'Vorrei una pizza.', translation: 'Poproszę pizzę.' },
+      { text: 'Non ho fame.', translation: 'Nie jestem głodny.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: "Posso portarle qualcos'altro?",
+    question_pl: 'Czy mogę przynieść coś jeszcze?',
+    answers: [
+      { text: 'No, grazie. Va bene così.', translation: 'Nie, dziękuję. Tak jest dobrze.' },
+      { text: 'Sì, dove sono i bagni?', translation: 'Tak, gdzie są toalety?' },
+      { text: 'Andiamo al cinema.', translation: 'Idziemy do kina.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Preferisce sedersi dentro o fuori?',
+    question_pl: 'Woli Pan/Pani usiąść w środku czy na zewnątrz?',
+    answers: [
+      { text: 'Dentro, per favore.', translation: 'W środku, proszę.' },
+      { text: 'Fuori, grazie.', translation: 'Na zewnątrz, dziękuję.' },
+      { text: 'Non so nuotare.', translation: 'Nie umiem pływać.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Vuole del pane?',
+    question_pl: 'Czy chce Pan/Pani trochę chleba?',
+    answers: [
+      { text: 'Sì, grazie.', translation: 'Tak, dziękuję.' },
+      { text: 'No, arrivederci.', translation: 'Nie, do widzenia.' },
+      { text: 'Ho due fratelli.', translation: 'Mam dwóch braci.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Acqua naturale o frizzante?',
+    question_pl: 'Woda niegazowana czy gazowana?',
+    answers: [
+      { text: 'Naturale, per favore.', translation: 'Niegazowaną, proszę.' },
+      { text: 'Con ghiaccio.', translation: 'Z lodem.' },
+      { text: 'Ho perso il treno.', translation: 'Spóźniłem się na pociąg.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Vorrebbe provare la specialità della casa?',
+    question_pl: 'Czy chciałby/chciałaby Pan/Pani spróbować specjału domu?',
+    answers: [
+      { text: 'Certo, perché no?', translation: 'Oczywiście, czemu nie?' },
+      { text: 'Devo fare i compiti.', translation: 'Muszę odrobić zadanie domowe.' },
+      { text: 'Non mangio pesce.', translation: 'Nie jem ryb.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Ha qualche allergia?',
+    question_pl: 'Czy ma Pan/Pani jakieś alergie?',
+    answers: [
+      { text: 'Sì, sono allergico alle noci.', translation: 'Tak, mam alergię na orzechy.' },
+      { text: 'No, sono in vacanza.', translation: 'Nie, jestem na wakacjach.' },
+      { text: 'Vivo a Roma.', translation: 'Mieszkam w Rzymie.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Desidera un contorno?',
+    question_pl: 'Czy chce Pan/Pani dodatek?',
+    answers: [
+      { text: 'Sì, delle patate al forno.', translation: 'Tak, pieczone ziemniaki.' },
+      { text: 'Ho perso il portafoglio.', translation: 'Zgubiłem portfel.' },
+      { text: 'Parli più lentamente.', translation: 'Proszę mówić wolniej.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Posso togliere il piatto?',
+    question_pl: 'Czy mogę zabrać talerz?',
+    answers: [
+      { text: 'Sì, ho finito, grazie.', translation: 'Tak, skończyłem, dziękuję.' },
+      { text: 'Ancora no, sto mangiando.', translation: 'Jeszcze nie, jem.' },
+      { text: 'Dove siamo?', translation: 'Gdzie jesteśmy?' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Vuole vedere la carta dei vini?',
+    question_pl: 'Czy chce Pan/Pani zobaczyć kartę win?',
+    answers: [
+      { text: 'Sì, grazie.', translation: 'Tak, dziękuję.' },
+      { text: 'No, non bevo vino.', translation: 'Nie, nie piję wina.' },
+      { text: 'Che ore sono?', translation: 'Która jest godzina?' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Quante persone siete?',
+    question_pl: 'Ile osób jest w Państwa grupie?',
+    answers: [
+      { text: 'Siamo in quattro.', translation: 'Jest nas czworo.' },
+      { text: 'Mi chiamo Marco.', translation: 'Nazywam się Marco.' },
+      { text: 'Voglio andare a casa.', translation: 'Chcę iść do domu.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Desidera un caffè?',
+    question_pl: 'Czy chciałby/chciałaby Pan/Pani kawę?',
+    answers: [
+      { text: 'Sì, un espresso, grazie.', translation: 'Tak, espresso, dziękuję.' },
+      { text: 'Prendo il treno.', translation: 'Pojadę pociągiem.' },
+      { text: 'Mi piace il cinema.', translation: 'Lubię kino.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Ha gradito il dessert?',
+    question_pl: 'Czy smakował deser?',
+    answers: [
+      { text: 'Sì, era squisito!', translation: 'Tak, był wyśmienity!' },
+      { text: 'Preferisco stare a casa.', translation: 'Wolę zostać w domu.' },
+      { text: 'Non parlo inglese.', translation: 'Nie mówię po angielsku.' },
+    ],
+    correct: 0,
+  },
+  {
+    question: 'Desidera ordinare un antipasto?',
+    question_pl: 'Czy chce Pan/Pani zamówić przystawkę?',
+    answers: [
+      { text: 'Sì, una bruschetta, per favore.', translation: 'Tak, poproszę bruschettę.' },
+      { text: 'Mi piace leggere libri.', translation: 'Lubię czytać książki.' },
+      { text: 'No, il conto, per favore.', translation: 'Nie, poproszę rachunek.' },
+    ],
+    correct: 0,
   },
 ];
 
+let restaurantDialogues = [];
 let restaurantStep = 0;
 let restaurantCorrect = 0;
 
 function startRestaurantGame() {
   restaurantStep = 0;
   restaurantCorrect = 0;
+  restaurantDialogues = shuffle([...restaurantDialoguesPool]).slice(0, 5);
   const container = document.getElementById('game-container');
   container.innerHTML = '';
   showRestaurantRound(container);
@@ -697,6 +859,10 @@ function showRestaurantRound(container) {
   const questionEl = document.createElement('div');
   questionEl.className = 'question';
   questionEl.appendChild(createItalianWordElement(dialog.question));
+  const qTrans = document.createElement('div');
+  qTrans.className = 'translation';
+  qTrans.textContent = dialog.question_pl;
+  questionEl.appendChild(qTrans);
   wrapper.appendChild(questionEl);
 
   const answersDiv = document.createElement('div');
@@ -704,7 +870,7 @@ function showRestaurantRound(container) {
   dialog.answers.forEach((ans, idx) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn';
-    btn.appendChild(createItalianWordElement(ans));
+    btn.appendChild(createItalianWordElement(ans.text));
     btn.addEventListener('click', () => {
       evaluateRestaurantAnswer(btn, idx, dialog, wrapper, container);
     });
@@ -725,24 +891,26 @@ function evaluateRestaurantAnswer(btn, idx, dialog, wrapper, container) {
     if (i === dialog.correct) {
       b.classList.add('correct');
     }
+    if (b === btn && idx !== dialog.correct) {
+      b.classList.add('wrong');
+    }
+    const trans = document.createElement('div');
+    trans.className = 'translation';
+    trans.textContent = dialog.answers[i].translation;
+    b.appendChild(trans);
   });
+
   let points = 0;
   if (idx === dialog.correct) {
-    btn.classList.add('correct');
     points = 1;
     restaurantCorrect++;
-  } else {
-    btn.classList.add('wrong');
   }
   addPoints(points);
+
   const result = document.createElement('p');
   result.style.marginTop = '10px';
-  if (points > 0) {
-    result.textContent = 'Poprawna odpowiedź! +1 punkt';
-  } else {
-    result.textContent = 'Błędna odpowiedź. Prawidłowo: ';
-    result.appendChild(createItalianWordElement(dialog.answers[dialog.correct]));
-  }
+  result.textContent =
+    points > 0 ? 'Poprawna odpowiedź! +1 punkt' : 'Błędna odpowiedź.';
   wrapper.appendChild(result);
 
   const nextBtn = document.createElement('button');
@@ -776,8 +944,11 @@ function showRestaurantSummary(container) {
   const list = document.createElement('ul');
   restaurantDialogues.forEach((d) => {
     const li = document.createElement('li');
-    li.appendChild(createItalianWordElement(d.answers[d.correct]));
-    li.appendChild(document.createTextNode(' – ' + d.translation));
+    li.appendChild(createItalianWordElement(d.answers[d.correct].text));
+    const trans = document.createElement('span');
+    trans.className = 'translation';
+    trans.textContent = ' – ' + d.answers[d.correct].translation;
+    li.appendChild(trans);
     list.appendChild(li);
   });
   wrapper.appendChild(list);
