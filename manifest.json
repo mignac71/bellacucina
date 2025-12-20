@@ -1,0 +1,26 @@
+{
+  "name": "Bella Cucina - Nauka gotowania i włoskiego",
+  "short_name": "Bella Cucina",
+  "description": "Ucz się włoskiego przez gotowanie! Przepisy, gry i fiszki.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f7f0d0",
+  "theme_color": "#009246",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "food"],
+  "lang": "pl"
+}

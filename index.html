@@ -3,8 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bella Cucina – Nauka gotowania i języka włoskiego</title>
+    <meta name="description" content="Bella Cucina - nauka gotowania i języka włoskiego. Ponad 100 przepisów, gry edukacyjne i wymowa włoska." />
+    <meta name="keywords" content="włoskie przepisy, nauka włoskiego, kuchnia włoska, pasta, risotto, gotowanie" />
+    <meta name="author" content="Bella Cucina" />
+    <meta name="theme-color" content="#009246" />
+    <title>Bella Cucina – Nauka gotowania i języka włoskiego</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="images/icon-192.png" />
     <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
@@ -15,19 +21,29 @@
     />
   </head>
   <body>
-    <nav class="top-nav">
-      <a href="index.html"><img src="images/home.png" alt="Strona główna" /></a>
+    <nav class="top-nav" role="navigation" aria-label="Główna nawigacja">
+      <a href="index.html" aria-label="Strona główna"><img src="images/home.png" alt="Strona główna" /></a>
       <a href="recipes.html">Przepisy</a>
+      <a href="flashcards.html">Fiszki</a>
       <a href="game.html">Gry</a>
+      <div class="theme-toggle" id="theme-toggle" role="button" aria-label="Przełącz tryb ciemny" tabindex="0">
+        <span class="theme-toggle-icon">☀️</span>
+        <div class="theme-toggle-switch"></div>
+      </div>
     </nav>
     <header class="hero home-hero">
       <img
         src="images/start1.jpg"
-        alt="Grafika startowa Bella Cucina"
+        alt="Grafika startowa Bella Cucina"
         class="hero-img"
+        loading="lazy"
       />
     </header>
 
+    <!-- Progress display -->
+    <div class="progress-container" id="progress-display" aria-label="Twój postęp nauki">
+      <!-- Rendered by JavaScript -->
+    </div>
 
     <main class="container">
       <section class="intro">
@@ -41,14 +57,19 @@
       </section>
 
       <section class="actions">
-        <div class="card">
+        <div class="card animate-fade-in">
           <a href="recipes.html">
-            <img src="images/przepisy.jpg" alt="Przepisy" />
+            <img src="images/przepisy.jpg" alt="Przepisy" loading="lazy" />
           </a>
         </div>
-        <div class="card">
+        <div class="card animate-fade-in">
+          <a href="flashcards.html">
+            <img src="images/fiszki.jpg" alt="Fiszki" loading="lazy" />
+          </a>
+        </div>
+        <div class="card animate-fade-in">
           <a href="game.html">
-            <img src="images/gry.jpg" alt="Gry" />
+            <img src="images/gry.jpg" alt="Gry" loading="lazy" />
           </a>
         </div>
       </section>
@@ -56,11 +77,17 @@
 
     <footer>
       <p>
-        &copy; 2025 Bella Cucina – Ucz się włoskiego i odkrywaj smak Italii.
+        &copy; 2025 Bella Cucina – Ucz się włoskiego i odkrywaj smak Italii.
         Powodzenia w nauce i smacznego!
       </p>
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+      // Register Service Worker for PWA
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+      }
+    </script>
   </body>
 </html>

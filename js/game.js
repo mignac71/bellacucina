@@ -254,8 +254,16 @@ window.initGamePage = function () {
         startIngredientGame();
       } else if (game === 'translation') {
         startTranslationGame();
+      } else if (game === 'marathon') {
+        startMarathonGame();
       } else if (game === 'restaurant') {
         startRestaurantGame();
+      } else if (game === 'fillblank') {
+        startFillBlankGame();
+      } else if (game === 'steps') {
+        startStepsGame();
+      } else if (game === 'guessrecipe') {
+        startGuessRecipeGame();
       }
     });
   });
@@ -956,4 +964,589 @@ function showRestaurantSummary(container) {
   container.innerHTML = '';
   container.appendChild(wrapper);
   addExitButton(container);
+}
+
+// ============================================
+// MARATHON GAME - Translation with timer
+// ============================================
+
+let marathonTimer = null;
+let marathonTimeLeft = 60;
+let marathonScore = 0;
+let marathonStreak = 0;
+
+function startMarathonGame() {
+  const container = document.getElementById('game-container');
+  container.innerHTML = '';
+
+  marathonTimeLeft = 60;
+  marathonScore = 0;
+  marathonStreak = 0;
+
+  const title = document.createElement('h2');
+  title.textContent = 'Maraton Tłumaczeniowy – 60 sekund!';
+  container.appendChild(title);
+
+  // Timer display
+  const timerDiv = document.createElement('div');
+  timerDiv.className = 'timer-container';
+  timerDiv.innerHTML = `
+    <div class="timer-display" id="marathon-timer">60</div>
+    <div class="timer-bar">
+      <div class="timer-fill" id="marathon-timer-bar" style="width: 100%"></div>
+    </div>
+  `;
+  container.appendChild(timerDiv);
+
+  // Stats display
+  const statsDiv = document.createElement('div');
+  statsDiv.className = 'marathon-stats';
+  statsDiv.innerHTML = `
+    <div class="marathon-stat">
+      <div class="marathon-stat-value" id="marathon-score">0</div>
+      <div class="marathon-stat-label">Punkty</div>
+    </div>
+    <div class="marathon-stat">
+      <div class="marathon-stat-value" id="marathon-streak">0</div>
+      <div class="marathon-stat-label">Seria</div>
+    </div>
+  `;
+  container.appendChild(statsDiv);
+
+  // Game area
+  const gameArea = document.createElement('div');
+  gameArea.id = 'marathon-game-area';
+  gameArea.className = 'translation-game';
+  container.appendChild(gameArea);
+
+  // Start timer
+  marathonTimer = setInterval(updateMarathonTimer, 1000);
+
+  // Show first question
+  showMarathonQuestion();
+
+  addExitButton(container);
+
+  // Record game played
+  if (typeof recordGamePlayed === 'function') {
+    recordGamePlayed();
+  }
+}
+
+function updateMarathonTimer() {
+  marathonTimeLeft--;
+
+  const timerDisplay = document.getElementById('marathon-timer');
+  const timerBar = document.getElementById('marathon-timer-bar');
+
+  if (timerDisplay) {
+    timerDisplay.textContent = marathonTimeLeft;
+    if (marathonTimeLeft <= 10) {
+      timerDisplay.classList.add('warning');
+      timerBar.classList.add('low');
+    }
+  }
+
+  if (timerBar) {
+    timerBar.style.width = `${(marathonTimeLeft / 60) * 100}%`;
+  }
+
+  if (marathonTimeLeft <= 0) {
+    clearInterval(marathonTimer);
+    showMarathonResults();
+  }
+}
+
+function showMarathonQuestion() {
+  const gameArea = document.getElementById('marathon-game-area');
+  if (!gameArea) return;
+
+  const pair = ingredientsPairs[Math.floor(Math.random() * ingredientsPairs.length)];
+  const direction = Math.random() < 0.5 ? 'it2pl' : 'pl2it';
+
+  let questionWord, correctAnswer;
+  if (direction === 'it2pl') {
+    questionWord = pair.it;
+    correctAnswer = pair.pl;
+  } else {
+    questionWord = pair.pl;
+    correctAnswer = pair.it;
+  }
+
+  const answers = [correctAnswer];
+  const candidates = shuffle([...ingredientsPairs]);
+  for (let ing of candidates) {
+    const candidate = direction === 'it2pl' ? ing.pl : ing.it;
+    if (candidate !== correctAnswer && !answers.includes(candidate)) {
+      answers.push(candidate);
+    }
+    if (answers.length >= 4) break;
+  }
+  shuffle(answers);
+
+  gameArea.innerHTML = `
+    <div class="flags">
+      <span class="flag">${direction === 'it2pl' ? '🇮🇹' : '🇵🇱'}</span>
+      <span class="arrow">→</span>
+      <span class="flag">${direction === 'it2pl' ? '🇵🇱' : '🇮🇹'}</span>
+    </div>
+    <div class="word-box">${questionWord}</div>
+    <div class="answers" id="marathon-answers"></div>
+  `;
+
+  const answersDiv = document.getElementById('marathon-answers');
+  answers.forEach((ans) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = ans;
+    btn.addEventListener('click', () => {
+      handleMarathonAnswer(ans, correctAnswer, btn);
+    });
+    answersDiv.appendChild(btn);
+  });
+}
+
+function handleMarathonAnswer(chosen, correct, btnEl) {
+  const scoreEl = document.getElementById('marathon-score');
+  const streakEl = document.getElementById('marathon-streak');
+
+  if (chosen === correct) {
+    marathonScore++;
+    marathonStreak++;
+    btnEl.classList.add('correct');
+    addPoints(1);
+    if (typeof recordAnswer === 'function') {
+      recordAnswer(true, correct);
+    }
+  } else {
+    marathonStreak = 0;
+    btnEl.classList.add('wrong');
+    if (typeof recordAnswer === 'function') {
+      recordAnswer(false, correct);
+    }
+  }
+
+  if (scoreEl) scoreEl.textContent = marathonScore;
+  if (streakEl) streakEl.textContent = marathonStreak;
+
+  // Quick transition to next question
+  setTimeout(showMarathonQuestion, 300);
+}
+
+function showMarathonResults() {
+  const container = document.getElementById('game-container');
+  container.innerHTML = `
+    <div class="results-overlay">
+      <div class="results-card">
+        <h2>⏱️ Czas minął!</h2>
+        <div class="results-score">${marathonScore}</div>
+        <p class="results-message">punktów w 60 sekund</p>
+        <p>Najdłuższa seria: ${marathonStreak}</p>
+        <button class="submit-btn" onclick="startMarathonGame()">Zagraj ponownie</button>
+        <button class="exit-btn" onclick="showGameMenu()" style="margin-top: 10px;">Wróć do menu</button>
+      </div>
+    </div>
+  `;
+}
+
+// ============================================
+// FILL THE BLANK GAME
+// ============================================
+
+const fillBlankSentences = [
+  { sentence: "Vorrei ordinare ___, per favore.", options: ["la pizza", "il treno", "la finestra", "il libro"], correct: 0, translation: "Chciałbym zamówić pizzę, proszę." },
+  { sentence: "Posso avere il ___, per favore?", options: ["conto", "palazzo", "treno", "giardino"], correct: 0, translation: "Czy mogę prosić o rachunek?" },
+  { sentence: "Vorrei un bicchiere di ___.", options: ["vino rosso", "carta", "telefono", "cappello"], correct: 0, translation: "Poproszę kieliszek czerwonego wina." },
+  { sentence: "La ___ è deliziosa!", options: ["pasta", "strada", "macchina", "porta"], correct: 0, translation: "Makaron jest pyszny!" },
+  { sentence: "Avete ___ vegetariane?", options: ["opzioni", "scarpe", "chiavi", "borse"], correct: 0, translation: "Czy macie opcje wegetariańskie?" },
+  { sentence: "Il ___ è molto buono qui.", options: ["caffè", "treno", "teatro", "museo"], correct: 0, translation: "Kawa jest tutaj bardzo dobra." },
+  { sentence: "Vorrei prenotare un ___ per due.", options: ["tavolo", "biglietto", "vestito", "libro"], correct: 0, translation: "Chciałbym zarezerwować stolik dla dwóch." },
+  { sentence: "Quanto costa il ___?", options: ["piatto del giorno", "ponte", "fiume", "monte"], correct: 0, translation: "Ile kosztuje danie dnia?" }
+];
+
+function startFillBlankGame() {
+  const container = document.getElementById('game-container');
+  container.innerHTML = '';
+
+  const title = document.createElement('h2');
+  title.textContent = 'Uzupełnij Zdanie';
+  container.appendChild(title);
+
+  showFillBlankRound(container, 0, 0);
+}
+
+function showFillBlankRound(container, index, score) {
+  if (index >= fillBlankSentences.length) {
+    showFillBlankResults(container, score);
+    return;
+  }
+
+  const item = fillBlankSentences[index];
+  const shuffledOptions = shuffle([...item.options]);
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'fill-blank-game animate-fade-in';
+
+  wrapper.innerHTML = `
+    <div class="flashcard-progress">${index + 1} / ${fillBlankSentences.length}</div>
+    <div class="fill-blank-sentence">
+      ${item.sentence.replace('___', '<span class="fill-blank-gap" id="blank-gap">?</span>')}
+    </div>
+    <div class="answers" id="fill-answers"></div>
+  `;
+
+  container.innerHTML = '';
+  container.appendChild(wrapper);
+
+  const answersDiv = document.getElementById('fill-answers');
+  shuffledOptions.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = opt;
+    btn.addEventListener('click', () => {
+      handleFillBlankAnswer(container, index, score, opt, item, btn);
+    });
+    answersDiv.appendChild(btn);
+  });
+
+  addExitButton(container);
+}
+
+function handleFillBlankAnswer(container, index, score, chosen, item, btnEl) {
+  const correctAnswer = item.options[item.correct];
+  const gap = document.getElementById('blank-gap');
+  const buttons = document.querySelectorAll('#fill-answers .answer-btn');
+
+  buttons.forEach(b => {
+    b.disabled = true;
+    if (b.textContent === correctAnswer) {
+      b.classList.add('correct');
+    }
+  });
+
+  let newScore = score;
+  if (chosen === correctAnswer) {
+    btnEl.classList.add('correct');
+    gap.textContent = correctAnswer;
+    gap.style.background = 'rgba(0, 146, 70, 0.3)';
+    newScore++;
+    addPoints(1);
+  } else {
+    btnEl.classList.add('wrong');
+    gap.textContent = correctAnswer;
+    gap.style.background = 'rgba(206, 43, 55, 0.3)';
+  }
+
+  // Show translation
+  const transP = document.createElement('p');
+  transP.style.marginTop = '15px';
+  transP.style.fontStyle = 'italic';
+  transP.textContent = item.translation;
+  document.querySelector('.fill-blank-sentence').appendChild(transP);
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'submit-btn';
+  nextBtn.textContent = index < fillBlankSentences.length - 1 ? 'Następne' : 'Zobacz wynik';
+  nextBtn.addEventListener('click', () => {
+    showFillBlankRound(container, index + 1, newScore);
+  });
+  document.querySelector('.fill-blank-game').appendChild(nextBtn);
+}
+
+function showFillBlankResults(container, score) {
+  container.innerHTML = `
+    <div class="results-card" style="margin: 40px auto;">
+      <h2>🎉 Ukończono!</h2>
+      <div class="results-score">${score} / ${fillBlankSentences.length}</div>
+      <p class="results-message">poprawnych odpowiedzi</p>
+      <button class="submit-btn" onclick="startFillBlankGame()">Zagraj ponownie</button>
+    </div>
+  `;
+  addExitButton(container);
+
+  if (typeof recordGamePlayed === 'function') {
+    recordGamePlayed();
+  }
+}
+
+// ============================================
+// STEPS GAME - Arrange recipe steps
+// ============================================
+
+const recipeSteps = [
+  {
+    name: "Spaghetti Carbonara",
+    steps: [
+      { it: "Taglia il guanciale a dadini.", pl: "Pokrój guanciale w kostkę." },
+      { it: "Rosola il guanciale in padella.", pl: "Podsmaż guanciale na patelni." },
+      { it: "Monta i tuorli con il pecorino.", pl: "Ubij żółtka z pecorino." },
+      { it: "Cuoci la pasta al dente.", pl: "Ugotuj makaron al dente." },
+      { it: "Unisci la pasta al guanciale.", pl: "Połącz makaron z guanciale." },
+      { it: "Aggiungi la crema di uova.", pl: "Dodaj krem z jajek." }
+    ]
+  },
+  {
+    name: "Tiramisù",
+    steps: [
+      { it: "Separa i tuorli dagli albumi.", pl: "Oddziel żółtka od białek." },
+      { it: "Sbatti i tuorli con lo zucchero.", pl: "Ubij żółtka z cukrem." },
+      { it: "Incorpora il mascarpone.", pl: "Dodaj mascarpone." },
+      { it: "Monta gli albumi a neve.", pl: "Ubij białka na pianę." },
+      { it: "Inzuppa i savoiardi nel caffè.", pl: "Namocz biszkopty w kawie." },
+      { it: "Alterna strati di crema e biscotti.", pl: "Układaj warstwy kremu i biszkoptów." }
+    ]
+  }
+];
+
+function startStepsGame() {
+  const container = document.getElementById('game-container');
+  container.innerHTML = '';
+
+  const title = document.createElement('h2');
+  title.textContent = 'Ułóż Kroki Przepisu';
+  container.appendChild(title);
+
+  const recipe = recipeSteps[Math.floor(Math.random() * recipeSteps.length)];
+  showStepsRound(container, recipe);
+}
+
+function showStepsRound(container, recipe) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'step-game animate-fade-in';
+
+  const titleDiv = document.createElement('div');
+  titleDiv.className = 'step-game-title';
+  titleDiv.innerHTML = `<h3>${recipe.name}</h3><p>Przeciągnij kroki w odpowiedniej kolejności</p>`;
+  wrapper.appendChild(titleDiv);
+
+  const stepsContainer = document.createElement('div');
+  stepsContainer.className = 'steps-container';
+  stepsContainer.id = 'steps-container';
+
+  // Shuffle steps
+  const shuffledSteps = shuffle(recipe.steps.map((s, i) => ({ ...s, correctOrder: i })));
+
+  shuffledSteps.forEach((step, idx) => {
+    const stepEl = document.createElement('div');
+    stepEl.className = 'step-item';
+    stepEl.draggable = true;
+    stepEl.dataset.correctOrder = step.correctOrder;
+    stepEl.innerHTML = `
+      <span class="step-number">${idx + 1}</span>
+      <span class="step-text">${step.it}</span>
+      <span class="step-handle"><i class="fas fa-grip-lines"></i></span>
+    `;
+
+    // Drag and drop handlers
+    stepEl.addEventListener('dragstart', handleDragStart);
+    stepEl.addEventListener('dragover', handleDragOver);
+    stepEl.addEventListener('drop', handleDrop);
+    stepEl.addEventListener('dragend', handleDragEnd);
+
+    stepsContainer.appendChild(stepEl);
+  });
+
+  wrapper.appendChild(stepsContainer);
+
+  const checkBtn = document.createElement('button');
+  checkBtn.className = 'submit-btn';
+  checkBtn.textContent = 'Sprawdź kolejność';
+  checkBtn.addEventListener('click', () => checkStepsOrder(recipe));
+  wrapper.appendChild(checkBtn);
+
+  container.innerHTML = '';
+  container.appendChild(wrapper);
+  addExitButton(container);
+}
+
+let draggedElement = null;
+
+function handleDragStart(e) {
+  draggedElement = e.target.closest('.step-item');
+  draggedElement.classList.add('dragging');
+}
+
+function handleDragOver(e) {
+  e.preventDefault();
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  const target = e.target.closest('.step-item');
+  if (target && draggedElement && target !== draggedElement) {
+    const container = document.getElementById('steps-container');
+    const allItems = [...container.querySelectorAll('.step-item')];
+    const draggedIdx = allItems.indexOf(draggedElement);
+    const targetIdx = allItems.indexOf(target);
+
+    if (draggedIdx < targetIdx) {
+      target.parentNode.insertBefore(draggedElement, target.nextSibling);
+    } else {
+      target.parentNode.insertBefore(draggedElement, target);
+    }
+
+    // Update numbers
+    updateStepNumbers();
+  }
+}
+
+function handleDragEnd(e) {
+  if (draggedElement) {
+    draggedElement.classList.remove('dragging');
+    draggedElement = null;
+  }
+}
+
+function updateStepNumbers() {
+  const items = document.querySelectorAll('.step-item');
+  items.forEach((item, idx) => {
+    item.querySelector('.step-number').textContent = idx + 1;
+  });
+}
+
+function checkStepsOrder(recipe) {
+  const items = document.querySelectorAll('.step-item');
+  let correctCount = 0;
+
+  items.forEach((item, idx) => {
+    const correctOrder = parseInt(item.dataset.correctOrder);
+    if (correctOrder === idx) {
+      item.classList.add('correct');
+      correctCount++;
+    } else {
+      item.classList.add('incorrect');
+    }
+    item.draggable = false;
+  });
+
+  addPoints(correctCount);
+
+  const resultP = document.createElement('p');
+  resultP.style.textAlign = 'center';
+  resultP.style.marginTop = '15px';
+  resultP.textContent = `Poprawnie: ${correctCount} / ${recipe.steps.length}`;
+  document.querySelector('.step-game').appendChild(resultP);
+
+  const againBtn = document.createElement('button');
+  againBtn.className = 'submit-btn';
+  againBtn.textContent = 'Inny przepis';
+  againBtn.addEventListener('click', startStepsGame);
+  document.querySelector('.step-game').appendChild(againBtn);
+
+  if (typeof recordGamePlayed === 'function') {
+    recordGamePlayed();
+  }
+}
+
+// ============================================
+// GUESS RECIPE GAME
+// ============================================
+
+function startGuessRecipeGame() {
+  const container = document.getElementById('game-container');
+  container.innerHTML = '';
+
+  const title = document.createElement('h2');
+  title.textContent = 'Zgadnij Przepis';
+  container.appendChild(title);
+
+  showGuessRecipeRound(container, 0, 0);
+}
+
+function showGuessRecipeRound(container, round, score) {
+  if (round >= 5) {
+    showGuessRecipeResults(container, score);
+    return;
+  }
+
+  // Pick a random recipe
+  const correctRecipe = recipesData[Math.floor(Math.random() * recipesData.length)];
+
+  // Get 3-5 ingredients from this recipe
+  const ingredients = shuffle(correctRecipe.ingredients).slice(0, Math.min(5, correctRecipe.ingredients.length));
+
+  // Get 3 wrong recipes as options
+  const wrongRecipes = shuffle(recipesData.filter(r => r.id !== correctRecipe.id)).slice(0, 3);
+  const options = shuffle([correctRecipe, ...wrongRecipes]);
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'guess-recipe-game animate-fade-in';
+
+  wrapper.innerHTML = `
+    <div class="flashcard-progress">Runda ${round + 1} / 5</div>
+    <p>Który przepis można przygotować z tych składników?</p>
+    <div class="ingredients-display" id="ingredients-display"></div>
+    <div class="recipe-options" id="recipe-options"></div>
+  `;
+
+  container.innerHTML = '';
+  container.appendChild(wrapper);
+
+  // Add ingredients
+  const ingredientsDiv = document.getElementById('ingredients-display');
+  ingredients.forEach(ing => {
+    const chip = document.createElement('span');
+    chip.className = 'ingredient-chip';
+    chip.textContent = ing.it;
+    chip.title = ing.pl;
+    ingredientsDiv.appendChild(chip);
+  });
+
+  // Add options
+  const optionsDiv = document.getElementById('recipe-options');
+  options.forEach(recipe => {
+    const btn = document.createElement('button');
+    btn.className = 'recipe-option';
+    btn.innerHTML = `<strong>${recipe.italian_name}</strong><br><span style="font-size: 0.9em;">${recipe.polish_name}</span>`;
+    btn.addEventListener('click', () => {
+      handleGuessRecipeAnswer(container, round, score, recipe.id, correctRecipe, btn);
+    });
+    optionsDiv.appendChild(btn);
+  });
+
+  addExitButton(container);
+}
+
+function handleGuessRecipeAnswer(container, round, score, chosenId, correctRecipe, btnEl) {
+  const buttons = document.querySelectorAll('.recipe-option');
+  let newScore = score;
+
+  buttons.forEach(b => {
+    b.disabled = true;
+    if (b.innerHTML.includes(correctRecipe.italian_name)) {
+      b.classList.add('correct');
+    }
+  });
+
+  if (chosenId === correctRecipe.id) {
+    btnEl.classList.add('correct');
+    newScore++;
+    addPoints(1);
+  } else {
+    btnEl.classList.add('incorrect');
+  }
+
+  const nextBtn = document.createElement('button');
+  nextBtn.className = 'submit-btn';
+  nextBtn.textContent = round < 4 ? 'Następna runda' : 'Zobacz wynik';
+  nextBtn.addEventListener('click', () => {
+    showGuessRecipeRound(container, round + 1, newScore);
+  });
+  document.querySelector('.guess-recipe-game').appendChild(nextBtn);
+}
+
+function showGuessRecipeResults(container, score) {
+  container.innerHTML = `
+    <div class="results-card" style="margin: 40px auto;">
+      <h2>🍽️ Koniec gry!</h2>
+      <div class="results-score">${score} / 5</div>
+      <p class="results-message">przepisów rozpoznanych</p>
+      <button class="submit-btn" onclick="startGuessRecipeGame()">Zagraj ponownie</button>
+    </div>
+  `;
+  addExitButton(container);
+
+  if (typeof recordGamePlayed === 'function') {
+    recordGamePlayed();
+  }
 }

@@ -6,6 +6,23 @@
   --color-beige: #f7f0d0;
   --text-dark: #333333;
   --card-shadow: rgba(0, 0, 0, 0.1);
+  --bg-primary: #f7f0d0;
+  --bg-card: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --border-color: #ccc;
+}
+
+/* Dark mode theme */
+:root.dark {
+  --color-beige: #1a1a2e;
+  --bg-primary: #1a1a2e;
+  --bg-card: #16213e;
+  --text-dark: #e8e8e8;
+  --text-primary: #e8e8e8;
+  --text-secondary: #b8b8b8;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --border-color: #444;
 }
 
 /* Basic resets */
@@ -23,7 +40,8 @@ body {
   padding-top: 60px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: 'Georgia', serif;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -138,6 +156,7 @@ h1, h2 {
        height limit is applied so the full artwork remains visible. */
     background: linear-gradient(to bottom, var(--color-beige), transparent);
   }
+
   .hero.small-hero .hero-img {
     /* No separate height limit for small heroes on wide screens */
   }
@@ -233,6 +252,7 @@ h1, h2 {
   font-size: 0.95rem;
   color: var(--text-dark);
 }
+
 .card img {
   width: 100%;
   height: auto;
@@ -546,14 +566,17 @@ summary::-webkit-details-marker {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
+
 .ingredient-game .submit-btn:hover {
   background-color: #007735;
 }
+
 .ingredient-game .recipe-title-it {
   text-align: center;
   font-size: 1.5rem;
   margin-bottom: 4px;
 }
+
 .ingredient-game .recipe-title-pl {
   text-align: center;
   font-style: italic;
@@ -644,6 +667,7 @@ summary::-webkit-details-marker {
   display: block;
   margin: 20px auto 0;
 }
+
 .translation-game .submit-btn:hover {
   background-color: #007735;
 }
@@ -848,4 +872,601 @@ summary::-webkit-details-marker {
 
 .pronounce-btn:hover {
   color: var(--color-green);
+}
+
+/* ============================================
+   DARK MODE & NEW FEATURES STYLES
+   ============================================ */
+
+/* Theme toggle switch */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+.theme-toggle-switch {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background: var(--color-green);
+  border-radius: 13px;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle-switch::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--color-white);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+:root.dark .theme-toggle-switch {
+  background: var(--color-red);
+}
+
+:root.dark .theme-toggle-switch::before {
+  transform: translateX(24px);
+}
+
+.theme-toggle-icon {
+  font-size: 1.2rem;
+}
+
+/* Progress bar in header */
+.progress-container {
+  background: var(--bg-card);
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 10px auto;
+  max-width: 500px;
+  box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+.progress-bar {
+  height: 12px;
+  background: var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-green), var(--color-red));
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 6px;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+
+.progress-stat {
+  text-align: center;
+}
+
+.progress-stat-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-green);
+}
+
+/* Enhanced animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 0.5s ease;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease forwards;
+}
+
+/* Smooth transitions for all interactive elements */
+.recipe-item,
+.game-card,
+.card,
+.memory-card,
+.option,
+.answer-btn {
+  transition: all 0.3s ease;
+}
+
+/* Improved hover states */
+.recipe-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+/* ============================================
+   FLASHCARDS MODULE
+   ============================================ */
+
+.flashcards-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.flashcard-wrapper {
+  perspective: 1000px;
+  margin: 20px 0;
+}
+
+.flashcard {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+  cursor: pointer;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front,
+.flashcard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--card-shadow);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.flashcard-front {
+  background: linear-gradient(135deg, var(--color-green), #00b356);
+  color: var(--color-white);
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, var(--color-red), #e74c3c);
+  color: var(--color-white);
+  transform: rotateY(180deg);
+}
+
+.flashcard-word {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.flashcard-hint {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+.flashcard-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.flashcard-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.flashcard-btn.know {
+  background: var(--color-green);
+  color: white;
+}
+
+.flashcard-btn.dont-know {
+  background: var(--color-red);
+  color: white;
+}
+
+.flashcard-btn:hover {
+  transform: scale(1.05);
+}
+
+.flashcard-progress {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   TIMER FOR MARATHON MODE
+   ============================================ */
+
+.timer-container {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.timer-display {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--color-red);
+  font-family: 'Courier New', monospace;
+}
+
+.timer-display.warning {
+  animation: pulse 0.5s infinite;
+  color: #ff4444;
+}
+
+.timer-bar {
+  height: 8px;
+  background: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.timer-fill {
+  height: 100%;
+  background: var(--color-green);
+  transition: width 0.1s linear;
+}
+
+.timer-fill.low {
+  background: var(--color-red);
+}
+
+.marathon-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.marathon-stat {
+  text-align: center;
+}
+
+.marathon-stat-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.marathon-stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-green);
+}
+
+/* ============================================
+   NEW GAMES STYLES
+   ============================================ */
+
+/* Fill the blank game */
+.fill-blank-game {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.fill-blank-sentence {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  padding: 20px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.fill-blank-gap {
+  display: inline-block;
+  min-width: 120px;
+  border-bottom: 3px solid var(--color-green);
+  margin: 0 5px;
+  padding: 5px 10px;
+  background: rgba(0, 146, 70, 0.1);
+  border-radius: 4px;
+}
+
+/* Step by step game */
+.step-game {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.step-game-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px var(--card-shadow);
+}
+
+.step-item:active {
+  cursor: grabbing;
+}
+
+.step-item.dragging {
+  opacity: 0.5;
+  transform: scale(1.02);
+}
+
+.step-item.correct {
+  background: rgba(0, 146, 70, 0.2);
+  border-left: 4px solid var(--color-green);
+}
+
+.step-item.incorrect {
+  background: rgba(206, 43, 55, 0.2);
+  border-left: 4px solid var(--color-red);
+}
+
+.step-number {
+  width: 30px;
+  height: 30px;
+  background: var(--color-green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.step-text {
+  flex: 1;
+}
+
+.step-handle {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+}
+
+/* Guess recipe game */
+.guess-recipe-game {
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.ingredients-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.ingredient-chip {
+  padding: 10px 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--color-green);
+  border-radius: 20px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.ingredient-chip:hover {
+  background: var(--color-green);
+  color: white;
+}
+
+.recipe-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.recipe-option {
+  padding: 15px 25px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.recipe-option:hover {
+  border-color: var(--color-green);
+  background: rgba(0, 146, 70, 0.1);
+}
+
+.recipe-option.correct {
+  background: var(--color-green);
+  color: white;
+  border-color: var(--color-green);
+}
+
+.recipe-option.incorrect {
+  background: var(--color-red);
+  color: white;
+  border-color: var(--color-red);
+}
+
+/* Game mode selector */
+.game-mode-selector {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.mode-btn {
+  padding: 10px 20px;
+  border: 2px solid var(--color-green);
+  background: transparent;
+  color: var(--color-green);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover,
+.mode-btn.active {
+  background: var(--color-green);
+  color: white;
+}
+
+/* Results overlay */
+.results-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.results-card {
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 400px;
+  animation: slideIn 0.3s ease;
+}
+
+.results-score {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--color-green);
+  margin: 20px 0;
+}
+
+.results-message {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Dark mode adjustments for cards */
+:root.dark .card,
+:root.dark .recipe-item,
+:root.dark .game-card,
+:root.dark .memory-card,
+:root.dark .flashcard-front,
+:root.dark .flashcard-back {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+:root.dark .top-nav {
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+:root.dark .top-nav a {
+  color: var(--text-primary);
+}
+
+:root.dark input,
+:root.dark select {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+:root.dark footer {
+  background: var(--color-green);
+}
+
+:root.dark .recipe-item summary {
+  background-image: linear-gradient(to right, var(--color-green), var(--bg-card), var(--color-red));
+  color: var(--text-primary);
 }

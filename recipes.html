@@ -1,72 +1,85 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Przepisy – Bella Cucina</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-dH9z5c6BAV5lpZdscOSgnUUuY+2r78JFG6ESZsCp2BGhj9x4t3iPza6ArVHMV0Pux+uAoH+g9oKSM8d1Ji4EVw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <nav class="top-nav">
-      <a href="index.html"><img src="images/home.png" alt="Strona główna" /></a>
-      <a href="recipes.html">Przepisy</a>
-      <a href="game.html">Gry</a>
-    </nav>
-    <header class="hero small-hero">
-      <img src="images/przepisy_big.jpg" alt="Przepisy" class="hero-img" />
-    </header>
 
-    <main class="container">
-      <section class="controls">
-        <div class="filter-row">
-          <input
-            type="text"
-            id="search-input"
-            placeholder="Szukaj przepisu..."
-          />
-          <select id="category-filter">
-            <option value="all">Wszystkie kategorie</option>
-            <option value="pasta">Pasta</option>
-            <option value="risotto">Risotto</option>
-            <option value="zupa">Zupy</option>
-            <option value="mięso">Mięsa</option>
-            <option value="ryby">Ryby</option>
-            <option value="przystawka">Przystawki</option>
-            <option value="deser">Desery</option>
-            <option value="pizza">Pizza</option>
-            <option value="pieczywo">Pieczywo</option>
-            <option value="warzywa">Warzywa</option>
-          </select>
-        </div>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Ponad 100 włoskich przepisów z tłumaczeniami. Poznaj składniki po włosku i polsku z wymową." />
+  <meta name="keywords" content="przepisy włoskie, pasta, risotto, nauka włoskiego, składniki po włosku" />
+  <meta name="theme-color" content="#009246" />
+  <title>Przepisy – Bella Cucina</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-dH9z5c6BAV5lpZdscOSgnUUuY+2r78JFG6ESZsCp2BGhj9x4t3iPza6ArVHMV0Pux+uAoH+g9oKSM8d1Ji4EVw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-      <section class="recipe-list" id="recipe-list">
-        <!-- recipes inserted here -->
-      </section>
-    </main>
+<body>
+  <nav class="top-nav" role="navigation" aria-label="Główna nawigacja">
+    <a href="index.html" aria-label="Strona główna"><img src="images/home.png" alt="Strona główna" /></a>
+    <a href="recipes.html">Przepisy</a>
+    <a href="flashcards.html">Fiszki</a>
+    <a href="game.html">Gry</a>
+    <div class="theme-toggle" id="theme-toggle" role="button" aria-label="Przełącz tryb ciemny" tabindex="0">
+      <span class="theme-toggle-icon">☀️</span>
+      <div class="theme-toggle-switch"></div>
+    </div>
+  </nav>
+  <header class="hero small-hero">
+    <img src="images/przepisy_big.jpg" alt="Przepisy" class="hero-img" loading="lazy" />
+  </header>
 
-    <!-- Detailed instructions before recipes.js so that recipeInstructions
+  <!-- Progress display -->
+  <div class="progress-container" id="progress-display" aria-label="Twój postęp nauki">
+  </div>
+
+  <main class="container">
+    <section class="controls">
+      <div class="filter-row">
+        <input type="text" id="search-input" placeholder="Szukaj przepisu..." aria-label="Wyszukaj przepis" />
+        <select id="category-filter" aria-label="Filtruj według kategorii">
+          <option value="all">Wszystkie kategorie</option>
+          <option value="pasta">Pasta</option>
+          <option value="risotto">Risotto</option>
+          <option value="zupa">Zupy</option>
+          <option value="mięso">Mięsa</option>
+          <option value="ryby">Ryby</option>
+          <option value="przystawka">Przystawki</option>
+          <option value="deser">Desery</option>
+          <option value="pizza">Pizza</option>
+          <option value="pieczywo">Pieczywo</option>
+          <option value="warzywa">Warzywa</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="recipe-list" id="recipe-list" role="list" aria-label="Lista przepisów">
+      <!-- recipes inserted here -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bella Cucina – Ucz się włoskiego i odkrywaj smak Italii.</p>
+  </footer>
+
+  <!-- Detailed instructions before recipes.js so that recipeInstructions
          is available for each recipe. -->
-    <script src="js/instructions.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/recipes.js"></script>
-    <script>
-      fetch('data/recipes.json')
-        .then((res) => res.json())
-        .then((data) => {
-          window.recipesData = data;
-          if (typeof initRecipesPage === 'function') {
-            initRecipesPage();
-          }
-        })
-        .catch((err) => console.error('Błąd ładowania danych przepisów:', err));
-    </script>
-  </body>
+  <script src="js/instructions.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/recipes.js"></script>
+  <script>
+    fetch('data/recipes.json')
+      .then((res) => res.json())
+      .then((data) => {
+        window.recipesData = data;
+        if (typeof initRecipesPage === 'function') {
+          initRecipesPage();
+        }
+      })
+      .catch((err) => console.error('Błąd ładowania danych przepisów:', err));
+  </script>
+</body>
+
 </html>
